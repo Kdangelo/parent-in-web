@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import OnboardingPage from "../pages/onboardingPage";
+import OnboardingPage from "../pages/OnboardingPage";
 import DashboardPage from "../pages/DashboardPage";
 
 

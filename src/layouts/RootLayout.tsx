@@ -1,15 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 
 const RootLayout: React.FC = () => (
-  <div className="min-h-screen bg-gray-100 font-sans">
-    <nav className="bg-white shadow-xl p-4 flex justify-center space-x-8 border-b-4 border-blue-500">
-      <Link to="/" className="text-blue-600 hover:text-blue-800 font-bold text-lg transition duration-150">Inicio</Link>
-      <Link to="/login" className="text-blue-600 hover:text-blue-800 font-bold text-lg transition duration-150">Login</Link>
-      <Link to="/register" className="text-blue-600 hover:text-blue-800 font-bold text-lg transition duration-150">Registro</Link>
-      <Link to="/onboarding" className="text-blue-600 hover:text-blue-800 font-bold text-lg transition duration-150">Incorporación</Link>
-      <Link to="/dashboard" className="text-blue-600 hover:text-blue-800 font-bold text-lg transition duration-150">Dashboard</Link>
+  <div className="min-h-screen flex flex-col">
+    <nav className="bg-[#C5D0EC] p-4 shadow-md flex flex-col sm:flex-row sm:justify-around sm:items-center">
+      <Link to="/" className="text-[#FDFD96] **font-lora** font-bold text-lg mb-2 sm:mb-0 hover:text-white transition duration-300">Inicio</Link>
+      <Link to="/login" className="text-[#FDFD96] **font-lora** font-bold text-lg mb-2 sm:mb-0 hover:text-white transition duration-300">Login</Link>
+      <Link to="/register" className="text-[#FDFD96] **font-lora** font-bold text-lg mb-2 sm:mb-0 hover:text-white transition duration-300">Registro</Link>
+      <Link to="/onboarding" className="text-[#FDFD96] **font-lora** font-bold text-lg mb-2 sm:mb-0 hover:text-white transition duration-300">Incorporación</Link>
+      <Link to="/dashboard" className="text-[#FDFD96] **font-lora** font-bold text-lg mb-2 sm:mb-0 hover:text-white transition duration-300">Dashboard</Link>
     </nav>
-    <main className="container mx-auto p-8 bg-white shadow-2xl mt-8 rounded-lg">
+    <main className="bg-[#F7F6F1] p-4 grow">
       <Outlet /> 
     </main>
   </div>
