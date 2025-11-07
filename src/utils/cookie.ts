@@ -1,4 +1,5 @@
+import Cookies from 'js-cookie';
+
 export const getCookie = (name: string): string | null => {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? decodeURIComponent(match[2]) : null;
+    return Cookies.get(name) || null;
 }
