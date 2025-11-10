@@ -1,8 +1,8 @@
-
+import LoginFormComponent from "../components/Forms/LoginFormComponent";
 
 const LoginPage: React.FC = () => {
   return (
-    <div>LoginPage</div>
+    <LoginFormComponent />
   )
 }
 
