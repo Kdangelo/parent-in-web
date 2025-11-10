@@ -1,8 +1,8 @@
-
+import RegisterFormComonent from "../components/Forms/RegisterFormComonent";
 
 const RegisterPage: React.FC = () => {
   return (
-    <div>RegisterPage</div>
+    <RegisterFormComonent />
   )
 }
 
