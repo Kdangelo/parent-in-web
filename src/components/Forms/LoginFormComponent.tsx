@@ -1,13 +1,22 @@
 import { Link } from "react-router-dom";
-import familia from '../../assets/familia.jpg';
+import { useForm } from "react-hook-form";
+
+import familia from "../../assets/familia.jpg";
+import type { User } from "../../types/types";
 
 const LoginFormComponent = () => {
 
+  const { register, handleSubmit } = useForm<User>();
+
+  const onSubmit = (values: User) => {
+    console.log(values);
+    
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      
       <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-xl shadow-2xl overflow-hidden">
-        <div className="relative hidden lg:block h-full w-full"> 
+        <div className="relative hidden lg:block h-full w-full">
           <div className="flex flex-col items-center justify-center h-full p-8 bg-[#B5CCBE] text-white">
             <div className="max-w-md mx-auto text-center space-y-6">
               <img
@@ -15,7 +24,7 @@ const LoginFormComponent = () => {
                 alt="familia"
                 width={300}
                 height={300}
-                className="mx-auto" 
+                className="mx-auto"
               />
             </div>
           </div>
@@ -28,7 +37,7 @@ const LoginFormComponent = () => {
               <h2 className="text-xl text-gray-600">Bienvenid@ a Parent-In</h2>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-2">
                 <label className="text-sm text-gray-500" htmlFor="email">
                   Email
@@ -39,6 +48,7 @@ const LoginFormComponent = () => {
                   placeholder="example@mail.com"
                   className="w-full p-2 border rounded"
                   required
+                  {...register('email')}
                 />
               </div>
 
@@ -52,6 +62,7 @@ const LoginFormComponent = () => {
                   placeholder="Ingrese aquí su contraseña"
                   className="w-full p-2 border rounded"
                   required
+                  {...register('password')}
                 />
                 <div className="text-right">
                   <Link
@@ -78,7 +89,10 @@ const LoginFormComponent = () => {
 
               <p className="text-center text-sm text-gray-500">
                 ¿Nuevo en Parent-In?{" "}
-                <Link to="/register" className="text-gray-600 hover:text-gray-800">
+                <Link
+                  to="/register"
+                  className="text-gray-600 hover:text-gray-800"
+                >
                   Crear Cuenta
                 </Link>
               </p>
