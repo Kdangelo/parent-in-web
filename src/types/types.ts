@@ -5,3 +5,8 @@ export type User = {
     password?: string;
     enable: boolean
 }
+
+export type Rta = {
+    accessToken: string;
+    user: User
+}

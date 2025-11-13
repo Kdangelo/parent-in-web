@@ -2,14 +2,28 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import familia from "../../assets/familia.jpg";
-import type { User } from "../../types/types";
+import type { Rta, User } from "../../types/types";
+import { loginUserService } from "../../services/userService";
+import { useAuth } from "../../hooks/useAuth";
 
 const LoginFormComponent = () => {
 
   const { register, handleSubmit } = useForm<User>();
+  const {login} = useAuth();
 
-  const onSubmit = (values: User) => {
-    console.log(values);
+  const onSubmit = async (values: User) => {
+    try {
+      
+      const rta: Rta = await loginUserService(values);
+
+      login(rta.accessToken, rta.user);
+
+    } catch (error) {
+      if(error instanceof Error) {
+         console.log(error.message);
+      }
+      
+    }
     
   }
 
