@@ -19,6 +19,7 @@ export const userStore = create<AuthUser>((set) => {
 
     logout: () => {
       removeCookie(import.meta.env.VITE_TOKEN_KEY);
+      set({token: null, user: null, isAuthenticated: false});
     },
 
     updateUser: (partialUser) => {
