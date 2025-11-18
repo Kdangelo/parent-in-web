@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import type { Rta, UserVerify } from "../types/types";
 import { sendUserVerificationCodeService } from "../services/userService";
@@ -8,6 +9,8 @@ const EmailVerificationPage = () => {
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit } = useForm<UserVerify>();
+
+  const navigate = useNavigate();
 
   const onSubmit = async (values: UserVerify) => {
 
@@ -19,6 +22,12 @@ const EmailVerificationPage = () => {
 
         const rta: Rta = await sendUserVerificationCodeService(values);
 
+        Swal.fire({
+          title: rta,
+          icon: "success",
+          draggable: true
+        });
+        navigate('/login');
         
     } catch (error) {
       if (error instanceof Error) {
@@ -46,7 +55,7 @@ const EmailVerificationPage = () => {
               <h2 className="text-xl text-gray-600">Bienvenid@ a Parent-In</h2>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-2">
                 <label className="text-sm text-gray-500" htmlFor="email">
                   Email con el que se registró:
