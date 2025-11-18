@@ -1,7 +1,45 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import madre from "../../assets/madre.jpg";
+import type { UserCreate } from "../../types/types";
+import Swal from "sweetalert2";
+import { createUserService } from "../../services/userService";
 
 const RegisterFormComonent = () => {
+  const { register, handleSubmit } = useForm<UserCreate>();
+  const [loading, setLoading] = useState(false);
+
+  const [errorPasswd, setErrorPasswd] = useState("");
+
+  const onSubmit = async (values: UserCreate) => {
+    setErrorPasswd("");
+    setLoading(false);
+    if (values.password !== values.passwordConfirm) {
+      setErrorPasswd("Las contraseñas deben coincidir.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const rta = await createUserService(values);
+
+      console.log(rta);
+
+    } catch (error) {
+      if (error instanceof Error) {
+        //console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: error.message,
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-xl shadow-2xl overflow-hidden">
@@ -28,7 +66,7 @@ const RegisterFormComonent = () => {
               <h2 className="text-xl text-gray-600">Bienvenid@ a Parent-In</h2>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-2">
                 <label className="text-sm text-gray-500" htmlFor="name">
                   Apellido y Nombre
@@ -39,6 +77,7 @@ const RegisterFormComonent = () => {
                   placeholder="Apellido y Nombre"
                   className="w-full p-2 border rounded"
                   required
+                  {...register("name")}
                 />
               </div>
               <div className="space-y-2">
@@ -51,6 +90,7 @@ const RegisterFormComonent = () => {
                   placeholder="example@mail.com"
                   className="w-full p-2 border rounded"
                   required
+                  {...register("email")}
                 />
               </div>
               <div className="space-y-2">
@@ -63,6 +103,7 @@ const RegisterFormComonent = () => {
                   placeholder="Ingrese aquí su contraseña"
                   className="w-full p-2 border rounded"
                   required
+                  {...register("password")}
                 />
               </div>
               <div className="space-y-2">
@@ -78,11 +119,9 @@ const RegisterFormComonent = () => {
                   placeholder="Repita su contraseña"
                   className="w-full p-2 border rounded"
                   required
+                  {...register("passwordConfirm")}
                 />
-                {/* <div className="text-right">
-                  <input type="checkbox" name="" id="" required/>
-                  <label className="text-sm text-gray-500 hover:text-gray-700">Acepto téminos y condiciones.</label>
-                </div> */}
+                {errorPasswd && <p style={{ color: "red" }}>{errorPasswd}</p>}
                 <div className="text-right">
                   <div className="flex items-center justify-end">
                     <input
@@ -102,10 +141,44 @@ const RegisterFormComonent = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-xl py-3 px-6">
+              {/* <button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-xl py-3 px-6">
                 Registrarme
+              </button> */}
+              <button
+                disabled={loading}
+                className={`w-full rounded-xl py-3 px-6 flex items-center justify-center gap-2 font-semibold transition-colors duration-300 ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-gray-600 hover:bg-gray-700 text-white"
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      />
+                    </svg>
+                  </>
+                ) : (
+                  "Registrarme"
+                )}
               </button>
-
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200"></div>

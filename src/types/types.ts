@@ -6,7 +6,15 @@ export type User = {
     enable: boolean
 }
 
+export type UserCreate = User & { passwordConfirm: string };
+
+export type UserVerify = {
+    code: string;
+    email: string
+}
+
 export type Rta = {
     accessToken: string;
-    user: User
+    user: User;
+    message?: string;
 }
