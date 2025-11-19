@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import OnboardingPage from "../pages/OnboardingPage";
 import DashboardPage from "../pages/DashboardPage";
+import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <DashboardPage />
+            },
+            {
+                path: 'verification',
+                element: <EmailVerificationPage />
             },
             {
                 path: '*',
