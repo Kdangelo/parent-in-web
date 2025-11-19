@@ -15,7 +15,6 @@ const EmailVerificationPage = () => {
 
   const onSubmit = async (values: UserVerify) => {
     setLoading(false);
-    setEmail(values.email);
     try {
       setLoading(true);
 
@@ -38,6 +37,10 @@ const EmailVerificationPage = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
   };
 
   const handleResend = async (email: string) => {
@@ -90,6 +93,7 @@ const EmailVerificationPage = () => {
                   className="w-full p-2 border rounded"
                   required
                   {...register("email")}
+                  onChange={handleChange}
                 />
               </div>
               <div className="space-y-2">
