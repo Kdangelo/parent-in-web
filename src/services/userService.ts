@@ -104,6 +104,38 @@ export const sendUserVerificationCodeService = async (values: UserVerify) => {
   }
 };
 
+export const resendVerificationCode = async (email: string) => {
+
+  const url: string = `${import.meta.env.VITE_API_BASE_URL}/auth/resend-verification`;
+
+  try {
+
+    const response = await api.post(url, JSON.stringify({email}), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    return response.data;
+    
+  } catch (err) {
+    const error = err as AxiosError;
+    if (
+      error.response &&
+      typeof error.response.data === "object" &&
+      error.response.data !== null &&
+      "message" in error.response.data
+    ) {
+      const data = error.response.data as { message: string | string[] };
+      const message = Array.isArray(data.message)
+        ? data.message.join(", ")
+        : data.message;
+
+      throw new Error(message);
+    }
+  }
+}
+
 export const getUserProfile = async (token: string): Promise<User> => {
   const url: string = `${import.meta.env.VITE_API_BASE_URL}/auth/me`;
 

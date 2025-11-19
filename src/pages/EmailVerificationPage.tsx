@@ -3,35 +3,32 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import type { Rta, UserVerify } from "../types/types";
-import { sendUserVerificationCodeService } from "../services/userService";
+import { resendVerificationCode, sendUserVerificationCodeService } from "../services/userService";
 
 const EmailVerificationPage = () => {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
 
   const { register, handleSubmit } = useForm<UserVerify>();
 
   const navigate = useNavigate();
 
   const onSubmit = async (values: UserVerify) => {
-
     setLoading(false);
-
+    setEmail(values.email);
     try {
+      setLoading(true);
 
-        setLoading(true);
+      const rta: Rta = await sendUserVerificationCodeService(values);
 
-        const rta: Rta = await sendUserVerificationCodeService(values);
-
-        Swal.fire({
-          title: rta,
-          icon: "success",
-          draggable: true
-        });
-        navigate('/login');
-        
+      Swal.fire({
+        title: rta.message,
+        icon: "success",
+        draggable: true,
+      });
+      navigate("/login");
     } catch (error) {
       if (error instanceof Error) {
-        //console.log(error.message);
         Swal.fire({
           icon: "error",
           title: "Error!",
@@ -39,10 +36,36 @@ const EmailVerificationPage = () => {
         });
       }
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
+  const handleResend = async (email: string) => {
+    setLoading(false);
+
+    try {
+      setLoading(true);
+
+      await resendVerificationCode(email);
+
+      Swal.fire({
+        title: 'Se ha enviado un nuevo código de verificación.',
+        icon: "success",
+        draggable: true,
+      });
+
+    } catch (error) {
+      if (error instanceof Error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: error.message,
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid lg:grid-cols-1 bg-white rounded-xl shadow-2xl overflow-hidden">
@@ -118,6 +141,42 @@ const EmailVerificationPage = () => {
                 )}
               </button>
             </form>
+              <button
+                disabled={loading}
+                className={`w-full rounded-xl py-3 px-6 flex items-center justify-center gap-2 font-semibold transition-colors duration-300 ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-gray-600 hover:bg-gray-700 text-white"
+                }`}
+                onClick={() => handleResend(email)}
+              >
+                {loading ? (
+                  <>
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      />
+                    </svg>
+                  </>
+                ) : (
+                  "Reenviar Código"
+                )}
+              </button>
           </div>
         </div>
       </div>

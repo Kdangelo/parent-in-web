@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import madre from "../../assets/madre.jpg";
 import type { UserCreate } from "../../types/types";
 import Swal from "sweetalert2";
@@ -11,6 +11,8 @@ const RegisterFormComonent = () => {
   const [loading, setLoading] = useState(false);
 
   const [errorPasswd, setErrorPasswd] = useState("");
+
+  const navigate = useNavigate();
 
   const onSubmit = async (values: UserCreate) => {
     setErrorPasswd("");
@@ -23,13 +25,18 @@ const RegisterFormComonent = () => {
     try {
       setLoading(true);
 
-      const rta = await createUserService(values);
+      await createUserService(values);
 
-      console.log(rta);
+      Swal.fire({
+        title: 'Usuario creado. Se envió un código de verificación a tu email.',
+        icon: "success",
+        draggable: true,
+      });
 
+      navigate('/verification');
+      
     } catch (error) {
       if (error instanceof Error) {
-        //console.log(error.message);
         Swal.fire({
           icon: "error",
           title: "Error!",
@@ -141,9 +148,6 @@ const RegisterFormComonent = () => {
                 </div>
               </div>
 
-              {/* <button className="w-full bg-gray-600 hover:bg-gray-700 text-white rounded-xl py-3 px-6">
-                Registrarme
-              </button> */}
               <button
                 disabled={loading}
                 className={`w-full rounded-xl py-3 px-6 flex items-center justify-center gap-2 font-semibold transition-colors duration-300 ${
