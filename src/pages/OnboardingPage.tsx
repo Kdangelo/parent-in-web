@@ -1,8 +1,11 @@
+import StepSelector from "../components/StepSelector";
 
 
 const OnboardingPage: React.FC = () => {
   return (
-    <div>OnboardingPage</div>
+    <>
+      <StepSelector />
+    </>
   )
 }
 
