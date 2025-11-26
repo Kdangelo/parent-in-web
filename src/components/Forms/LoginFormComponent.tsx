@@ -28,11 +28,10 @@ const LoginFormComponent = () => {
 
       setLoading(false);
 
-      return rta.user.isOnboardingCompleted ? navigate('/') : navigate('/onboarding'); 
+      return rta.user.isOnboardingCompleted ? navigate('/dashboard') : navigate('/onboarding'); 
 
     } catch (error) {
       if (error instanceof Error) {
-        //console.log(error.message);
           Swal.fire({
             icon: "error",
             title: "Error!",

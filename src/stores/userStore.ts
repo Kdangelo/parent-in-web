@@ -4,7 +4,6 @@ import { getCookie, removeCookie, setCookie } from "../utils/cookie";
 
 export const userStore = create<AuthUser>((set) => {
   const initialToken = getCookie(import.meta.env.VITE_TOKEN_KEY);
-
   return {
     //estado inicial
     user: null,
