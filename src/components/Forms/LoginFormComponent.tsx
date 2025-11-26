@@ -18,13 +18,17 @@ const LoginFormComponent = () => {
 
   const onSubmit = async (values: User) => {
     setLoading(false);
-   
+    let rta: Rta;
     try {
       setLoading(true);
 
-      const rta: Rta = await loginUserService(values);
+      rta = await loginUserService(values);
 
       login(rta.accessToken, rta.user);
+
+      setLoading(false);
+
+      return rta.user.isOnboardingCompleted ? navigate('/') : navigate('/onboarding'); 
 
     } catch (error) {
       if (error instanceof Error) {
@@ -37,7 +41,6 @@ const LoginFormComponent = () => {
       }
     } finally {
       setLoading(false);
-      navigate('/');
     }
   };
 

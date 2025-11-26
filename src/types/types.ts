@@ -3,7 +3,8 @@ export type User = {
     email: string;
     name: string;
     password?: string;
-    enable: boolean
+    enable: boolean;
+    isOnboardingCompleted: boolean;
 }
 
 export type UserCreate = User & { passwordConfirm: string };
