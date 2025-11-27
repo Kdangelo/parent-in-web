@@ -4,7 +4,7 @@ import { Check, ChevronRight, ChevronLeft, Edit2 } from "lucide-react";
 import { SUPPORT_NEEDS_BY_STAGE } from "../constants/onboarding";
 
 
-const { PRE_LICENCIA, POST_LICENCIA, LICENCIA } = SUPPORT_NEEDS_BY_STAGE;
+const { PRE_LICENCIA } = SUPPORT_NEEDS_BY_STAGE;
 
 const experienceLevels = ["Novice", "Beginner", "Intermediate", "Knowledgeable", "Expert"]
 
@@ -47,7 +47,7 @@ const networks = [
 ]
 
 const transitionProps = {
-  type: "spring",
+  type: "spring" as const,
   stiffness: 500,
   damping: 30,
   mass: 0.5,
