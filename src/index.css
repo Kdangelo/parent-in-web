@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 @import "tailwindcss";
 
 @theme {
     --font-lora: 'Lora', serif;
+    
+    --font-glacial: 'Glacial Indifference', 'Inter', sans-serif;
+    
+    
+    --color-parent-bg: #C2D0F0;
+    --color-parent-yellow: #FDFD96;
+    --color-parent-text: #6A799D;
+    --color-parent-vector: #DDE7FD;
 }
