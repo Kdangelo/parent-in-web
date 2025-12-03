@@ -3,7 +3,7 @@ import Flor1 from "../../assets/flor1.png";
 
 const LandingComponent: React.FC = () => {
   const onStart = () => {
-    window.location.href = "/onboarding/steps/user";
+    window.location.href = "/onboarding/steps/profile";
   };
 
   return (

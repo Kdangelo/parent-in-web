@@ -10,6 +10,7 @@ import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 import StepSelectorComponent from "../components/StepSelectorComponent";
 import { stepsUser } from "../constants/stepsUser";
+import StepsProfileComponent from "../components/OnBoarding/StepsProfileComponent";
 
 
 const router = createBrowserRouter([
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
                 element: <OnboardingPage />
             },
             {
-                path: 'onboarding/steps/user',
-                element: <StepSelectorComponent stepsProp={stepsUser} />
+                path: 'onboarding/steps/profile',
+                element: <StepsProfileComponent />
             },
             {
                 path: 'dashboard',
