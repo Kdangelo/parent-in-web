@@ -1,8 +1,8 @@
 // Define los tipos de campos disponibles
-type FieldType = "date" | "select" | "multiselect" | "text" | "number" | "checkbox";
+type FieldType = "date" | "select" | "multiselect" | "text" | "number" | "checkbox" | "radio" | "tel";
 
 // Define la estructura de un paso del flujo
-type StepDefinition = {
+export type StepDefinition = {
   id: string;
   type: FieldType;
   question: string;

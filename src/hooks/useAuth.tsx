@@ -5,7 +5,7 @@ import type { User } from "../types/types";
 
 export const useAuth = () => {
 
-    const { user, isAuthenticated, token, login, logout, updateUser } = userStore();
+    const { user, isAuthenticated, token, login, logout, updateUser, setUserTypeStore, userTypeStore } = userStore();
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -60,6 +60,8 @@ export const useAuth = () => {
         login,
         logout,
         updateUser: handleUpdateProfile,
-        loadProfile
+        loadProfile,
+        setUserTypeStore,
+        userTypeStore,
     }
 }

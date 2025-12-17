@@ -1,15 +1,24 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
+import { userType } from "../../constants/usersType";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
+
 
 const StepsProfileComponent: React.FC = () => {
   const totalSteps = 6; // Suponiendo que hay 6 pasos en total
   const [currentStep, setCurrentStep] = useState(1);
+
+  const {setUserTypeStore, userTypeStore} = useAuth();
+  const navigate = useNavigate();
 
   const [selectedBirthday, setSelectedBirthday] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedPhone, setSelectedPhone] = useState('');
+  const [selectedUserType, setSelectedUserType] = useState('');
 
   const handleBack = () => {
     if (currentStep > 1) {
@@ -17,16 +26,8 @@ const StepsProfileComponent: React.FC = () => {
     }
   };
 
-  const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
 
   const canProceed = () => {
-    //const selected = answers[step?.id || 0] || [];
-    //return selected.length > 0;
-
     switch (currentStep) {
       case 1:
         return selectedBirthday !== '';
@@ -39,6 +40,8 @@ const StepsProfileComponent: React.FC = () => {
       case 5:
         return selectedPhone.length > 0;
       case 6:
+        return selectedUserType.length > 0;
+      case 7:
         return true;
       default:
         return false;
@@ -46,13 +49,29 @@ const StepsProfileComponent: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    
+    setUserTypeStore(selectedUserType);
+
+    //post al backend con los datos del formulario
+    console.log({birthday: selectedBirthday,
+      genre: selectedGenre,
+      country: selectedCountry,
+      city: selectedCity,
+      phone: selectedPhone,
+      userType: selectedUserType});
+    
     alert('Formulario enviado: ' + JSON.stringify({
       birthday: selectedBirthday,
       genre: selectedGenre,
       country: selectedCountry,
       city: selectedCity,
       phone: selectedPhone,
+      userType: selectedUserType,
     }));
+
+ 
+    navigate("/onboarding/steps");
+    
   }
 
   return (
@@ -123,12 +142,14 @@ const StepsProfileComponent: React.FC = () => {
                   onChange={(e) => setSelectedGenre(e.target.value)}
                   value={selectedGenre}
                 >
+                  <option>Sleccione una opción</option>
                   <option value="female">Femenino</option>
                   <option value="male">Masculino</option>
                   <option value="noAnswer">Prefiero no decirlo</option>
                 </select>
               </div>
             )}
+
             {currentStep === 3 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
@@ -178,6 +199,27 @@ const StepsProfileComponent: React.FC = () => {
               </div>
             )}
 
+            {currentStep === 6 && (
+              <div>
+                <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
+                  ¿Como te gustaría involucrarte con Parent In?
+                </h1>
+                <div className="flex flex-col gap-4 items-center">
+                  {userType.map(option => (
+                    <button
+                      onClick={() => setSelectedUserType(option.value)}
+                      className={`px-6 py-3 rounded-xl font-medium transition-colors text-base sm:text-lg md:text-xl ${
+                        selectedUserType === option.value
+                          ? "bg-blue-500 text-white"
+                          : "bg-white text-zinc-800 border border-zinc-300 hover:bg-zinc-100"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             {/* Botón siguiente / submit */}
             <div className="mt-6 flex justify-center">
               {currentStep < totalSteps ? (
@@ -209,3 +251,7 @@ const StepsProfileComponent: React.FC = () => {
 };
 
 export default StepsProfileComponent;
+// function setUserType(arg0: string) {
+//   throw new Error("Function not implemented.");
+// }
+
