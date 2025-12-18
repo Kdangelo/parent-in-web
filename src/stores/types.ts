@@ -4,6 +4,7 @@ interface AuthState {
     user: User | null;
     token: string | null;
     isAuthenticated: boolean;
+    userTypeStore: string | null;
 }
 
 interface AuthActions {
@@ -11,6 +12,7 @@ interface AuthActions {
     logout: () => void;
     updateUser: (user: Partial<User>) => void;
     setToken: (token: string) => void;
+    setUserTypeStore: (userTypeStore: string) => void;
 }
 
 export type AuthUser = AuthState & AuthActions;

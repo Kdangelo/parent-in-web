@@ -9,6 +9,7 @@ export const userStore = create<AuthUser>((set) => {
     user: null,
     token: initialToken || null,
     isAuthenticated: !!initialToken,
+    userTypeStore: null,
 
     //acciones
     login: (token, user) => {
@@ -35,6 +36,10 @@ export const userStore = create<AuthUser>((set) => {
         }
 
         set({ token, isAuthenticated: !!token})
+    },
+
+    setUserTypeStore: (userTypeStore) => {
+      set({ userTypeStore });
     }
   };
 });

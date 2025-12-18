@@ -8,8 +8,9 @@ import OnboardingPage from "../pages/OnboardingPage";
 import DashboardPage from "../pages/DashboardPage";
 import EmailVerificationPage from "../pages/EmailVerificationPage";
 
-import StepSelectorComponent from "../components/StepSelectorComponent";
-import { stepsUser } from "../constants/stepsUser";
+
+import StepsProfileComponent from "../components/OnBoarding/StepsProfileComponent";
+import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
 
 
 const router = createBrowserRouter([
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
                 element: <OnboardingPage />
             },
             {
-                path: 'onboarding/steps/user',
-                element: <StepSelectorComponent stepsProp={stepsUser} />
+                path: 'onboarding/profile',
+                element: <StepsProfileComponent />
+            },
+            {
+                path: 'onboarding/steps',
+                element: <OnboardingFlowEngine />
             },
             {
                 path: 'dashboard',

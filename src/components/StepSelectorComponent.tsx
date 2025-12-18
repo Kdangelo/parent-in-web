@@ -82,6 +82,7 @@ export default function StepSelectorComponent({stepsProp}: {stepsProp?: StepConf
         </div>
 
       )}
+      
       <div className="flex-1 flex items-center justify-center px-4">
         <AnimatePresence mode="wait">
           {step && (
