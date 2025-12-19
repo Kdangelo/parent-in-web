@@ -124,7 +124,7 @@ const StepsProfileComponent: React.FC = () => {
             {currentStep === 1 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
-                  Fecha de nacimiento
+                  ¿Cuál es tu fecha de nacimiento?
                 </h1>
                 <input className="border rounded-lg text-xl sm:text-2xl md:text-3xl p-3" type="date" name="birthday" id="" onChange={(e) => setSelectedBirthday(e.target.value)} value={selectedBirthday} />
               </div>
@@ -133,7 +133,7 @@ const StepsProfileComponent: React.FC = () => {
             {currentStep === 2 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
-                  Genero
+                  ¿Con qué género te identificas?
                 </h1>
                 <select
                   className="border px-6 py-3 rounded-xl font-medium transition-colors text-base sm:text-lg md:text-xl"
@@ -153,7 +153,7 @@ const StepsProfileComponent: React.FC = () => {
             {currentStep === 3 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
-                  País de residencia
+                  ¿En qué país te encuentas actualmente?
                 </h1>
                 <input
                   className="border rounded-lg text-xl sm:text-2xl md:text-3xl p-3"
@@ -169,7 +169,7 @@ const StepsProfileComponent: React.FC = () => {
             {currentStep === 4 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
-                  Ciudad de residencia
+                  ¿En qué ciudad vives?
                 </h1>
                 <input
                   className="border rounded-lg text-xl sm:text-2xl md:text-3xl p-3"
@@ -185,7 +185,7 @@ const StepsProfileComponent: React.FC = () => {
             {currentStep === 5 && (
               <div>
                 <h1 className="text-zinc-800 text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
-                  Celular de contacto
+                  ¿Cuál es tu número de contacto?
                 </h1>
                 <input
                   className="border rounded-lg text-xl sm:text-2xl md:text-3xl p-3"
