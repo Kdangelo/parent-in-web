@@ -1,5 +1,5 @@
 // OnboardingFlowEngine.tsx (Componente Único)
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 
 import DynamicFieldRenderer from "./DynamicFieldRenderer"; // Componente hijo
 import type { Answers, FlowDefinition } from "./types";
@@ -7,10 +7,11 @@ import type { Answers, FlowDefinition } from "./types";
 import { onboardingFlows } from "../../constants/onboardingFlows";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const OnboardingFlowEngine: React.FC = () => {
   const { userTypeStore } = useAuth();
-  
+
   const navigate = useNavigate();
 
   const [flow, setFlow] = useState<FlowDefinition | null>(null);
@@ -25,6 +26,10 @@ const OnboardingFlowEngine: React.FC = () => {
   useEffect(() => {
     if (!userTypeStore) return;
 
+    if(currentStep?.nextStep === 'final') {
+      setAnswers({});
+    }
+
     const fetchedFlow = onboardingFlows[userTypeStore];
 
     setFlow(fetchedFlow);
@@ -35,6 +40,7 @@ const OnboardingFlowEngine: React.FC = () => {
       );
       setHistory([firstStepId || "1"]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userTypeStore]);
 
   // 2. Manejar el avance del paso
@@ -61,8 +67,11 @@ const OnboardingFlowEngine: React.FC = () => {
       // Enviar a POST /api/onboarding/complete
       // submitOnboarding(userType, newAnswers);
       console.log(newAnswers);
-      
-      alert("¡Onboarding completado! Gracias." + JSON.stringify(newAnswers) + JSON.stringify({userType: userTypeStore}));
+
+      alert(
+        "¡Onboarding completado! Gracias." +
+          JSON.stringify(newAnswers)
+      );
     } else if (nextId) {
       setHistory((prevHistory) => [...prevHistory, nextId]); // Actualizar el historial
     }
@@ -89,6 +98,31 @@ const OnboardingFlowEngine: React.FC = () => {
     // userType: "parental" => "/dashboard-parental"
     // userType: "professional" => "/dashboard-professional"
     // userType: "corporate" => "/dashboard-corporate"
+    
+  //   Swal.fire({
+  //     title: "¡Muchas gracias por completar tus datos!",
+  //     icon: "info",
+  //     html: `
+  //   Tu dashboard está listo y personalizado
+  //   según tu etapa
+  // `,
+  //     showCloseButton: false,
+  //     showCancelButton: false,
+  //     focusConfirm: false,
+  //     confirmButtonText: `
+  //   <i class="fa fa-thumbs-up"></i> Continuar!
+  // `,
+  //     confirmButtonAriaLabel: "Thumbs up, great!",
+  //     cancelButtonText: `
+  //   <i class="fa fa-thumbs-down"></i>
+  // `,
+  //     cancelButtonAriaLabel: "Thumbs down",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       navigate("/dashboard");
+  //     }
+  //   }
+  // );
     navigate("/dashboard");
   }
 
