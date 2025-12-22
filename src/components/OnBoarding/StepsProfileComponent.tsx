@@ -10,7 +10,7 @@ const StepsProfileComponent: React.FC = () => {
   const totalSteps = 6; // Suponiendo que hay 6 pasos en total
   const [currentStep, setCurrentStep] = useState(1);
 
-  const {setUserTypeStore, userTypeStore} = useAuth();
+  const {setUserTypeStore} = useAuth();
   const navigate = useNavigate();
 
   const [selectedBirthday, setSelectedBirthday] = useState('');
