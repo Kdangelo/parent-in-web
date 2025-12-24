@@ -2,6 +2,7 @@ export type User = {
     id: string;
     email: string;
     name: string;
+    lastName: string;
     password?: string;
     enable: boolean;
     isOnboardingCompleted: boolean;

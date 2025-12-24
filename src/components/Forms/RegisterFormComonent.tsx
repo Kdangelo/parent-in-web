@@ -11,7 +11,6 @@ import { createUserService } from "../../services/userService";
 const RegisterFormComonent = () => {
   const { register, handleSubmit } = useForm<UserCreate>();
   const [loading, setLoading] = useState(false);
-  const [errorPasswd, setErrorPasswd] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -20,13 +19,7 @@ const RegisterFormComonent = () => {
   };
 
   const onSubmit = async (values: UserCreate) => {
-    setErrorPasswd("");
     setLoading(false);
-    if (values.password !== values.passwordConfirm) {
-      setErrorPasswd("Las contraseñas deben coincidir.");
-      return;
-    }
-
     try {
       setLoading(true);
       await createUserService(values);
@@ -157,11 +150,9 @@ const RegisterFormComonent = () => {
 
                 <div className="flex flex-col justify-center w-full h-[80px] rounded-[10px] bg-white px-4 md:px-[32px] transition-all duration-300 border border-[#8F9AB2] focus-within:border-[#C2D0F0] focus-within:ring-2 focus-within:ring-[#C2D0F0]">
                     <label htmlFor="lastName" className="font-bold text-[16px] text-[#393939] mb-[5px]">Last Name</label>
-                    <input id="lastName" type="text" placeholder="your last name" className="w-full outline-none text-gray-600 placeholder-gray-400 bg-transparent text-[16px]" required />
+                    <input id="lastName" type="text" placeholder="your last name" className="w-full outline-none text-gray-600 placeholder-gray-400 bg-transparent text-[16px]" required  {...register("lastName")} />
                 </div>
               </div>
-
-              {errorPasswd && <p className="text-red-500 text-sm mt-2 w-full max-w-[556px] 2xl:max-w-[700px]">{errorPasswd}</p>}
 
               <div className="flex items-center justify-center w-full max-w-[556px] 2xl:max-w-[700px] h-[64px] py-[15px] gap-[10px] mt-4">
                 <div className="flex items-center justify-center">
