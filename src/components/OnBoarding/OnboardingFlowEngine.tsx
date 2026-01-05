@@ -1,5 +1,5 @@
 // OnboardingFlowEngine.tsx (Componente Único)
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 
 import DynamicFieldRenderer from "./DynamicFieldRenderer"; // Componente hijo
 import type { Answers, FlowDefinition } from "./types";
@@ -86,6 +86,7 @@ const OnboardingFlowEngine: React.FC = () => {
   const allSteps = flow
     ? Object.keys(flow.steps).filter((id) => id !== "final")
     : [];
+    
   const stepIndex = allSteps.indexOf(currentStepId);
   const progress = flow
     ? Math.round(((stepIndex + 1) / allSteps.length) * 100)
@@ -99,31 +100,33 @@ const OnboardingFlowEngine: React.FC = () => {
     // userType: "professional" => "/dashboard-professional"
     // userType: "corporate" => "/dashboard-corporate"
     
-  //   Swal.fire({
-  //     title: "¡Muchas gracias por completar tus datos!",
-  //     icon: "info",
-  //     html: `
-  //   Tu dashboard está listo y personalizado
-  //   según tu etapa
-  // `,
-  //     showCloseButton: false,
-  //     showCancelButton: false,
-  //     focusConfirm: false,
-  //     confirmButtonText: `
-  //   <i class="fa fa-thumbs-up"></i> Continuar!
-  // `,
-  //     confirmButtonAriaLabel: "Thumbs up, great!",
-  //     cancelButtonText: `
-  //   <i class="fa fa-thumbs-down"></i>
-  // `,
-  //     cancelButtonAriaLabel: "Thumbs down",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       navigate("/dashboard");
-  //     }
-  //   }
-  // );
-    navigate("/dashboard");
+      Swal.fire({
+        title: "¡Muchas gracias por completar tus datos!",
+        icon: "info",
+        html: `
+      Tu dashboard está listo y personalizado
+      según tu etapa
+    `,
+        showCloseButton: false,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText: `
+      <i class="fa fa-thumbs-up"></i> Continuar!
+    `,
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: `
+      <i class="fa fa-thumbs-down"></i>
+    `,
+        cancelButtonAriaLabel: "Thumbs down",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          navigate("/dashboard");
+        }
+      }
+    );
+     navigate("/dashboard");
+
   }
 
   // 3. Renderizar el motor
