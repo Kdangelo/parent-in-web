@@ -19,6 +19,9 @@ const OnboardingFlowEngine: React.FC = () => {
   const [answers, setAnswers] = useState<Answers>({});
 
   const [history, setHistory] = useState<string[]>(["1"]); // Para manejar el historial de pasos
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const currentStepId = history[history.length - 1];
   const currentStep = flow?.steps[currentStepId];
 
@@ -40,7 +43,9 @@ const OnboardingFlowEngine: React.FC = () => {
       );
       setHistory([firstStepId || "1"]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userTypeStore]);
 
   // 2. Manejar el avance del paso
@@ -94,6 +99,10 @@ const OnboardingFlowEngine: React.FC = () => {
 
   const isBackButtonVisible = history.length > 1; //solo si hay pasos previos
 
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
+  }
+
   if (!flow || !currentStep) {
     // debería pegarle a algun endpoint para que de acuerdo al userType lleve un dashboard específico
     // userType: "parental" => "/dashboard-parental"
@@ -125,8 +134,6 @@ const OnboardingFlowEngine: React.FC = () => {
         }
       }
     );
-     navigate("/dashboard");
-
   }
 
   // 3. Renderizar el motor
