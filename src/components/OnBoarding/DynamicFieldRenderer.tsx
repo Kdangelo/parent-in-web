@@ -76,9 +76,9 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
 
     // 2. Lógica Condicional para la Opción "Otro/Otros"
     // Asumimos que el value de la opción "Otro" en tu JSON es 'otro' o 'other_needs'
-    const otherOptionValue = "other_needs"; // Usamos 'other_needs' como ejemplo
+    const otherOptionValue = "otra"; // Usamos 'other_needs' como ejemplo
     const isOtherSelected =
-      newValues.includes(otherOptionValue) || newValues.includes("otro");
+      newValues.includes(otherOptionValue) || newValues.includes("otra");
 
     if (isOtherSelected) {
       setShowOtherInput(true);
@@ -91,78 +91,7 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
     setValue(newValues);
   };
 
-  // Función para consolidar la respuesta antes de pasar a onNext
-  //   const handleSubmit = () => {
-
-  //     const isMultiSelect = step.type === "multiselect";
-  //     const isTextField = ["text", "date", "tel", "email"].includes(step.type);
-  //     const otherOptionValues = ["other", "otro", "other_needs", "otra"];
-
-  //     let finalAnswer: any; // Puede ser string o string[]
-  //     let valueForGlobalStore: string | null = null; // Variable para el estado global
-
-  //     // --- CONSOLIDACIÓN DE RESPUESTA (PASO CLAVE) ---
-
-  //     if (isMultiSelect) {
-  //         //Para MULTISELECT: finalAnswer es un array
-  //         finalAnswer = Array.isArray(value) ? [...value] : [];
-  //         const isOtherSelected = finalAnswer.some((v: string) => otherOptionValues.includes(v));
-
-  //         if (isOtherSelected) {
-  //             finalAnswer = finalAnswer.filter((v: string) => !otherOptionValues.includes(v));
-  //             if (otherText.trim()) {
-  //                 finalAnswer.push(otherText.trim());
-  //             }
-  //         }
-
-  //         // LÓGICA PARA EL ESTADO GLOBAL
-  //         // Si el estado global SÓLO quiere un string, asumimos que toma el primer valor del array.
-  //         if (finalAnswer.length > 0) {
-  //             valueForGlobalStore = finalAnswer[0] as string;
-  //         }
-
-  //     } else if (isTextField) {
-  //       finalAnswer = typeof value === 'string' ? value.trim() : value;
-  //       valueForGlobalStore = finalAnswer as string;
-  //     } else {
-  //         // Para SINGLE SELECT / RADIO / TEXT: finalAnswer es un string
-  //         finalAnswer = value;
-
-  //         if (otherOptionValues.includes(value as string)) {
-  //             finalAnswer = otherText.trim();
-  //         }
-
-  //         // El valor para el estado global es simplemente la respuesta final
-  //         valueForGlobalStore = finalAnswer as string;
-  //     }
-
-  //     const isValidSelection = isMultiSelect ? finalAnswer.length > 0 : !!finalAnswer;
-
-  //     const isNextButtonEnabled =
-  //         isValidSelection &&
-  //         (!showOtherInput || (showOtherInput && otherText.trim()));
-
-  //     // --- LÓGICA DE ESTADO GLOBAL Y NAVEGACIÓN ---
-
-  //     if (isNextButtonEnabled) {
-
-  //         // Usamos la variable específica para el estado global
-  //         if (step.nextStep === "final" && valueForGlobalStore) {
-  //             // Se ejecuta solo si es un paso final Y si se ha extraído un valor (string)
-  //             // Esto asegura que `setUserTypeStore` solo reciba un string.
-  //             setUserTypeStore(valueForGlobalStore);
-  //         }
-
-  //         // Pasamos SIEMPRE la respuesta COMPLETA (array o string) al componente padre
-  //         // para que se guarde correctamente en el objeto `answers` para el backend.
-  //         onNext(finalAnswer);
-  //         return;
-  //     } else {
-  //         alert("Debe completar la respuesta o especificar la opción 'Otro'.");
-  //     }
-  // };
-
-  //nueva versión de handleSubmit
+  // Lógica para manejar el envío de la respuesta
   const handleSubmit = () => {
     const isMultiSelect = step.type === "multiselect";
     const isTextField = ["text", "date", "tel", "email"].includes(step.type);
@@ -362,39 +291,11 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
             </button>
           </div>
         </div>
-        // <>
-        //   <input
-        //     type={step.type}
-        //     value={value}
-        //     onChange={(e) => setValue(e.target.value)}
-        //     // Estilo: input grande y centrado
-        //     className="w-full p-3 border border-gray-300 rounded-lg text-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-        //   />
-        //   <div className="pt-8 flex justify-center">
-        //     <button
-        //       onClick={handleSubmit}
-        //       disabled={!value}
-        //       className={`
-        //                     py-3 px-12 rounded-full text-white font-semibold shadow-md transition duration-200
-        //                     ${
-        //                       !value
-        //                         ? "bg-gray-400 cursor-not-allowed"
-        //                         : "bg-gray-600 hover:bg-gray-700"
-        //                     }
-        //                 `}
-        //     >
-        //       Siguiente
-        //     </button>
-        //   </div>
-        // </>
       );
 
     case "multiselect":
       return (
         <div className="flex flex-col space-y-4">
-          {/* Aquí va el mapeo de opciones para los botones de multiselect. 
-                  Usa `handleMultiselectChange` para alternar la selección.
-                */}
           {step.options?.map((option) => {
             const isActive = (value as string[]).includes(option.value);
 
@@ -403,6 +304,7 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
                 key={option.value}
                 onClick={() => handleMultiselectChange(option.value)}
                 className={`
+                   w-full py-3 px-6 rounded-lg text-lg font-medium transition duration-150 ease-in-out
                             ${
                               isActive
                                 ? "bg-blue-600 text-white shadow-lg border-blue-600"
@@ -430,7 +332,16 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
               onClick={handleSubmit}
               // La validación ahora debe revisar si `value` (que es un array) tiene elementos
               disabled={!value || (value as string[]).length === 0}
-              // ... (Clases de Tailwind CSS)
+              className={`
+                py-3 px-12 rounded-full text-white font-semibold shadow-md transition duration-200
+                ${
+                  !value || (showOtherInput && !otherText.trim())
+                    ? // Estilo Deshabilitado (Gris claro, cursor no permitido)
+                      "bg-gray-400 cursor-not-allowed"
+                    : // Estilo Habilitado (Gris oscuro, como en la imagen de ejemplo)
+                      "bg-gray-600 hover:bg-gray-700"
+                }
+              `}
             >
               Siguiente
             </button>
