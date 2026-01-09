@@ -7,10 +7,11 @@ import type { Answers, FlowDefinition } from "./types";
 import { onboardingFlows } from "../../constants/onboardingFlows";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const OnboardingFlowEngine: React.FC = () => {
   const { userTypeStore } = useAuth();
-  
+
   const navigate = useNavigate();
 
   const [flow, setFlow] = useState<FlowDefinition | null>(null);
@@ -18,12 +19,19 @@ const OnboardingFlowEngine: React.FC = () => {
   const [answers, setAnswers] = useState<Answers>({});
 
   const [history, setHistory] = useState<string[]>(["1"]); // Para manejar el historial de pasos
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const currentStepId = history[history.length - 1];
   const currentStep = flow?.steps[currentStepId];
 
   // 1. Cargar el flujo al montar el componente
   useEffect(() => {
     if (!userTypeStore) return;
+
+    if(currentStep?.nextStep === 'final') {
+      setAnswers({});
+    }
 
     const fetchedFlow = onboardingFlows[userTypeStore];
 
@@ -35,6 +43,9 @@ const OnboardingFlowEngine: React.FC = () => {
       );
       setHistory([firstStepId || "1"]);
     }
+    setIsLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userTypeStore]);
 
   // 2. Manejar el avance del paso
@@ -61,8 +72,11 @@ const OnboardingFlowEngine: React.FC = () => {
       // Enviar a POST /api/onboarding/complete
       // submitOnboarding(userType, newAnswers);
       console.log(newAnswers);
-      
-      alert("¡Onboarding completado! Gracias." + JSON.stringify(newAnswers) + JSON.stringify({userType: userTypeStore}));
+
+      alert(
+        "¡Onboarding completado! Gracias." +
+          JSON.stringify(newAnswers)
+      );
     } else if (nextId) {
       setHistory((prevHistory) => [...prevHistory, nextId]); // Actualizar el historial
     }
@@ -77,6 +91,7 @@ const OnboardingFlowEngine: React.FC = () => {
   const allSteps = flow
     ? Object.keys(flow.steps).filter((id) => id !== "final")
     : [];
+    
   const stepIndex = allSteps.indexOf(currentStepId);
   const progress = flow
     ? Math.round(((stepIndex + 1) / allSteps.length) * 100)
@@ -84,12 +99,41 @@ const OnboardingFlowEngine: React.FC = () => {
 
   const isBackButtonVisible = history.length > 1; //solo si hay pasos previos
 
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
+  }
+
   if (!flow || !currentStep) {
     // debería pegarle a algun endpoint para que de acuerdo al userType lleve un dashboard específico
     // userType: "parental" => "/dashboard-parental"
     // userType: "professional" => "/dashboard-professional"
     // userType: "corporate" => "/dashboard-corporate"
-    navigate("/dashboard");
+    
+      Swal.fire({
+        title: "¡Muchas gracias por completar tus datos!",
+        icon: "info",
+        html: `
+      Tu dashboard está listo y personalizado
+      según tu etapa
+    `,
+        showCloseButton: false,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText: `
+      <i class="fa fa-thumbs-up"></i> Continuar!
+    `,
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: `
+      <i class="fa fa-thumbs-down"></i>
+    `,
+        cancelButtonAriaLabel: "Thumbs down",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          navigate("/dashboard");
+        }
+      }
+    );
   }
 
   // 3. Renderizar el motor

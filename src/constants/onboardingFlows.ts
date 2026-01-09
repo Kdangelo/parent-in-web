@@ -1,6 +1,63 @@
 import type { FlowDefinition } from "../components/OnBoarding/types";
 
 export const onboardingFlows: Record<string, FlowDefinition> = {
+  commonSteps: {
+    userType: "commonSteps",
+    steps: {
+      "1": {
+        id: "1",
+        type: "date",
+        question: "¿Cuál es tu fecha de nacimiento?",
+        saveTo: "birthday",
+        nextStep: "2",
+      },
+      "2": {
+        id: "2",
+        type: "radio",
+        question: "¿Con qué género te identificas?",
+        options: [
+          { value: "masculino", label: "Masculino" },
+          { value: "femenino", label: "Femenino" },
+          { value: "noAnswer", label: "Prefiero no decirlo" },
+        ],
+        saveTo: "genre",
+        nextStep: "3",
+      },
+      "3": {
+        id: "3",
+        type: "text",
+        question: "¿En qué país te encuentas actualmente?",
+        saveTo: "country",
+        nextStep: "4",
+      },
+      "4": {
+        id: "4",
+        type: "text",
+        question: "¿En qué ciudad vives?",
+        saveTo: "city",
+        nextStep: "5",
+      },
+      "5": {
+        id: "5",
+        type: "text",
+        question: "¿Cuál es tu número de contacto?",
+        saveTo: "phone",
+        nextStep: "6",
+      },
+      "6": {
+        id: "6",
+        type: "radio",
+        question: "¿Como te gustaría involucrarte con Parent In?",
+        options: [
+          { value: "parental", label: "Soy madre, padre o persona gestante, quiero vivir la experiencia" },
+          { value: "organization", label: "Soy organización, quiero saber más" },
+          { value: "professional", label: "Soy profesional, quiero aplicar a la red" },
+        ],
+        saveTo: "userType",
+        nextStep: "final"
+      }
+    }
+  },
   parental: {
     userType: "parental",
     steps: {
@@ -11,7 +68,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
         options: [
           { value: "madre", label: "Madre" },
           { value: "padre", label: "Padre" },
-          { value: "otro", label: "Otro" },
+          { value: "otro", label: "Otro (especificar)" },
         ],
         saveTo: "userDescription",
         nextStep: "2",
@@ -26,7 +83,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "padre-padre", label: "Padre-Padre" },
           { value: "madre", label: "Madre" },
           { value: "padre", label: "Padre" },
-          { value: "otro", label: "Otro" },
+          { value: "otro", label: "Otro (especificar)" },
         ],
         saveTo: "familyType",
         nextStep: "3",
@@ -54,7 +111,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "trabajo part time", label: "Trabajo part time" },
           { value: "estoy buscando trabajo", label: "Estoy buscando trabajo" },
           { value: "estoy en pausa laboral", label: "Estoy en pausa laboral" },
-          { value: "otra", label: "Otra" },
+          { value: "otra", label: "Otro (especificar)" },
         ],
         saveTo: "currentEmploymentStatus",
         nextStep: "5",
@@ -71,13 +128,9 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           },
           {
             value: "corporación",
-            label: "Corporación(+1000)",
+            label: "Corporación (+1000)",
           },
-          { value: "ong/orgpublico", label: "ONG / Organismo Público" },
-          {
-            value: "sector público",
-            label: "Sector público / ONG / Fundación",
-          },
+          { value: "ong/orgpublico", label: "ONG/Organismo Público" },
           { value: "trabajo por mi cuenta", label: "Trabajo por mi cuenta" },
           { value: "otra", label: "Otro (especificar)" },
         ],
@@ -101,7 +154,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "gerencia media", label: "Gerencia media" },
           { value: "alta dirección c-level", label: "Alta dirección C-Level" },
           { value: "trabajo por mi cuenta", label: "Trabajo por mi cuenta" },
-          { value: "otra", label: "Otra" },
+          { value: "otra", label: "Otro (especificar)" },
         ],
         saveTo: "currentRole",
         nextStep: "7",

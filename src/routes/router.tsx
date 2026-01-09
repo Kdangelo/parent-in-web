@@ -8,8 +8,6 @@ import OnboardingPage from "../pages/OnboardingPage";
 import DashboardPage from "../pages/DashboardPage";
 import EmailVerificationPage from "../pages/EmailVerificationPage";
 
-
-import StepsProfileComponent from "../components/OnBoarding/StepsProfileComponent";
 import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
 
 
@@ -33,10 +31,6 @@ const router = createBrowserRouter([
             {
                 path: 'onboarding',
                 element: <OnboardingPage />
-            },
-            {
-                path: 'onboarding/profile',
-                element: <StepsProfileComponent />
             },
             {
                 path: 'onboarding/steps',

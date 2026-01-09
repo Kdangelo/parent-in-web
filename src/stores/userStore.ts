@@ -40,6 +40,7 @@ export const userStore = create<AuthUser>((set) => {
 
     setUserTypeStore: (userTypeStore) => {
       set({ userTypeStore });
-    }
+    },
+
   };
 });

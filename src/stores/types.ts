@@ -5,6 +5,7 @@ interface AuthState {
     token: string | null;
     isAuthenticated: boolean;
     userTypeStore: string | null;
+
 }
 
 interface AuthActions {

@@ -1,5 +1,13 @@
 // Define los tipos de campos disponibles
-type FieldType = "date" | "select" | "multiselect" | "text" | "number" | "checkbox" | "radio" | "tel";
+type FieldType = "date" | "select" | "multiselect" | "text" | "number" | "checkbox" | "radio" | "tel" | "email";
+
+interface ValidationRules {
+  required?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  pattern?: string;
+  errorMessage?: string;
+}
 
 // Define la estructura de un paso del flujo
 export type StepDefinition = {
@@ -14,6 +22,8 @@ export type StepDefinition = {
   // Propiedad para el campo "otro"
   hasOtherField?: boolean; // Propiedad custom para manejar el 'otro'
   otherFieldId?: string;
+  placeholder?: string;
+  validation?: ValidationRules;
 };
 
 // El JSON completo del flujo

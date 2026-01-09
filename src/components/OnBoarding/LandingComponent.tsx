@@ -1,9 +1,17 @@
 import React from "react";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 import Flor1 from "../../assets/flor1.png";
 
 const LandingComponent: React.FC = () => {
+
+  const {setUserTypeStore} = useAuth();
+  const navigate = useNavigate();
+
   const onStart = () => {
-    window.location.href = "/onboarding/profile";
+    setUserTypeStore("commonSteps");
+    navigate("/onboarding/steps");
   };
 
   return (
@@ -35,10 +43,13 @@ const LandingComponent: React.FC = () => {
         {/* Contenido de bienvenida */}
         <div className="space-y-4 mb-16">
           <h1 className="text-2xl sm:text-3xl font-semibold text-[#222222]">
-            ¡Te damos la bienvenida!
+            ¡Te damos la bienvenida a Parent In!
           </h1>
           <p className="text-sm italic font-bold sm:text-sm text-[#4B5563] max-w-md mx-auto leading-relaxed">
-            Queremos conocerte mejor para poder acompañarte
+            Acompañamos a personas y organizaciones en la transición parental.
+          </p>
+          <p className="text-sm italic font-bold sm:text-sm text-[#4B5563] max-w-md mx-auto leading-relaxed">
+            Completa los siguientes datos para personalizar tu experiencia.
           </p>
         </div>
 
