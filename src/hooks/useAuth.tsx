@@ -17,7 +17,7 @@ export const useAuth = () => {
         setError(null);
 
         try {
-            const profile = await getUserProfile(token);
+            const profile = await getUserProfile();
             updateUser(profile);
         } catch (error) {
             if(error instanceof Error) setError(error.message);
@@ -35,7 +35,7 @@ export const useAuth = () => {
 
         try {
             const payload: User = { ...user, ...data, id: user.id };
-            const updatedUser = await updateUserProfile(payload, token, user.id);
+            const updatedUser = await updateUserProfile(user.id, payload);
             updateUser(updatedUser);
         } catch (error) {
             setError('Falló la actualizacion del perfil');
