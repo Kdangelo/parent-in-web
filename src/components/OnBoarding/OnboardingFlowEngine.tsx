@@ -90,7 +90,6 @@ const OnboardingFlowEngine: React.FC = () => {
         });
         return;
       }
-      //console.log(newAnswers);
       // alert(userTypeStore);
       // alert(
       //   "¡Onboarding completado! Gracias." +
