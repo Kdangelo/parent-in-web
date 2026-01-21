@@ -78,7 +78,7 @@ const OnboardingFlowEngine: React.FC = () => {
         await submitOnboarding(userTypeStore, newAnswers);
         setLoading(false);
       } catch (error) {
-        setLoading(false);
+        //(setLoading(false);
         Swal.fire({
           title: "Error",
           text:

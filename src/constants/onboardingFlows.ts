@@ -181,9 +181,9 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
         type: "radio",
         question: "Felicitaciones!! ¿En qué trimestre te encuentras?",
         options: [
-          { value: "Primer Trimestre", label: "1er trimestre (1-12 semanas)" },
-          { value: "Segundo Trimestre", label: "2do trimestre (13-26 semanas)" },
-          { value: "Tercer Trimestre", label: "3er trimestre (27 semanas o mas)" },
+          { value: "TRIMESTER_1", label: "1er trimestre (1-12 semanas)" },
+          { value: "TRIMESTER_2", label: "2do trimestre (13-26 semanas)" },
+          { value: "TRIMESTER_3", label: "3er trimestre (27 semanas o mas)" },
         ],
         saveTo: "trimester",
         nextStep: "2",
@@ -192,7 +192,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
         id: "2",
         type: "date",
         question: "¿Para cúando esperas a tu bebé? Indica la fecha estimada para personalizar nuestras recomendaciones.",
-        saveTo: "dueDate",
+        saveTo: "estimatedDueDate",
         nextStep: "3",
       },
       "3":{
@@ -211,7 +211,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "Conectar con el momento del nacimiento", label: "Conectar con el momento del nacimiento" },
           { value: "otra", label: "Otro (especificar)" },
         ],
-        saveTo: "supportNeed",
+        saveTo: "preLicenseSupportNeeds",
         nextStep: "final",
       },
     },
@@ -223,7 +223,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
         id: "1",
         type: "date",
         question: "¡Felicitaciones! ¿Cuándo nació tu bebé? Indica la fecha para personalizar nuestras recomendaciones.",
-        saveTo: "birthDate",
+        saveTo: "babyBirthDate",
         nextStep: "2",
       },
       "2":{
@@ -235,9 +235,9 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "1 a 3 meses", label: "1 a 3 meses" },
           { value: "3 a 6 meses", label: "3 a 6 meses" },
           { value: "Más de 6 meses", label: "Más de 6 meses" },
-          { value: "otro", label: "Otro (especificar)" },
+          { value: "licenseDurationOther", label: "Otro (especificar)" },
         ],
-        saveTo: "leaveDuration",
+        saveTo: "licenseDuration",
         nextStep: "3",
       },
       "3":{
@@ -256,7 +256,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           {value: "Pensar cómo sería mi vuelta al trabajo", label: "Pensar cómo sería mi vuelta al trabajo" },
           { value: "otra", label: "Otro (especificar)" },
         ],
-        saveTo: "supportNeed",
+        saveTo: "licenseSupportNeeds",
         nextStep: "final",
       }
     },
@@ -282,9 +282,9 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "Part-time Presencial", label: "Part-time Presencial" },
           { value: "Part-time Hibrido", label: "Part-time Hibrido" },
           { value: "Part-time 100% Remoto", label: "Part-time 100% Remoto" },
-          { value: "otra", label: "Otro (especificar)" },
+          { value: "workModalityOther", label: "Otro (especificar)" },
         ],
-        saveTo: "returnType",
+        saveTo: "workModality",
         nextStep: "3",
       },
       "3":{
@@ -307,7 +307,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           {value: "Recibir apoyo en la lactancia", label: "Recibir apoyo en la lactancia" },
           { value: "otra", label: "Otro (especificar)" },
         ],
-        saveTo: "supportNeed",
+        saveTo: "postLicenseSupportNeeds",
         nextStep: "final",
       }
     }
