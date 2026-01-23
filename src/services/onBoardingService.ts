@@ -12,8 +12,8 @@ export const submitOnboarding = async (userTypeStore: string | null, answers: Re
             response = await api.post("/onboarding/parental", answers);
             break;
         case 'preLicencia':
-        case 'licensia':
-        case 'postLicensia':
+        case 'licencia':
+        case 'postLicencia':
             response = await api.put("/onboarding/stage-details", answers);
             //console.log("stage-details",response);
             

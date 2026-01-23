@@ -208,21 +208,11 @@ const OnboardingFlowEngine: React.FC = () => {
 
           {/* Renderer Dinámico */}
           {loading ? (
-            <div className="relative items-center block max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
-              <h5 className="mb-2 text-xl font-semibold tracking-tight text-heading opacity-20">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-body opacity-20">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
-              </p>
-              <div
-                role="status"
-                className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
-              >
+            <div className="text-center">
+              <div role="status">
                 <svg
                   aria-hidden="true"
-                  className="w-8 h-8 w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
+                  className="inline w-8 h-8 w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
