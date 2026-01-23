@@ -45,7 +45,9 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
     const isOtherSelected =
       selectedValue === "otro" ||
       selectedValue === "other" ||
-      selectedValue === "otra";
+      selectedValue === "otra" ||
+      selectedValue === "other_needs" ||
+      selectedValue === "OTHER";
 
     // **Lógica clave para "Otro/Otros"**
     if (isOtherSelected) {
