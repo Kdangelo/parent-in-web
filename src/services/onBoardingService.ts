@@ -15,11 +15,6 @@ export const submitOnboarding = async (userTypeStore: string | null, answers: Re
         case 'licencia':
         case 'postLicencia':
             response = await api.put("/onboarding/stage-details", answers);
-            //console.log("stage-details",response);
-            
-            // response = await api.put("/onboarding/learning-topics", answers);
-            // console.log("learning-topics",response);
-            
             break;
         default:
             throw new Error("Tipo de usuario no reconocido para el onboarding");
