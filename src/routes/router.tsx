@@ -9,6 +9,7 @@ import DashboardPage from "../pages/DashboardPage";
 import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
+import DashboardLayout from "../components/Dashboard/MainLayout/DashboardLayout";
 
 
 const router = createBrowserRouter([
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'dashboard',
-                element: <DashboardPage />
+                element: <DashboardLayout />,
+                //element: <DashboardPage />
             },
             {
                 path: 'verification',
