@@ -5,10 +5,10 @@ import NotFoundPage from "../pages/NotFoundPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import OnboardingPage from "../pages/OnboardingPage";
-import DashboardPage from "../pages/DashboardPage";
 import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
+import DashboardLayout from "../components/Dashboard/MainLayout/DashboardLayout";
 
 
 const router = createBrowserRouter([
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'dashboard',
-                element: <DashboardPage />
+                element: <DashboardLayout />,
             },
             {
                 path: 'verification',
