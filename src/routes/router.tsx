@@ -9,7 +9,7 @@ import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
 import DashboardLayout from "../components/Dashboard/MainLayout/DashboardLayout";
-
+import DashBoardHomeComponent from "../components/Dashboard/DashBoardHomeComponent";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                 path: 'dashboard',
                 element: <DashboardLayout />,
                 children: [
-                    { index: true, element: <div>Dashboard Home</div> },
+                    { index: true, element: <DashBoardHomeComponent /> },
                     { path: 'resources', element: <div>Resources</div> },
                     { path: 'checklist', element: <div>Checklist</div> },
                     { path: 'checkin', element: <div>Check In</div> },
