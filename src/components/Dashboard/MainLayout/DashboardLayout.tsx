@@ -25,26 +25,6 @@ export default function DashboardLayout() {
                 <EllipsisVerticalIcon className="h-8 w-8 text-[#A5B1C2]" /> 
               </button>
             </div>
-            <div 
-              className="absolute md:relative md:top-0 md:left-0 flex flex-col justify-center"
-              style={{
-                width: '413px',
-                height: '76px',
-                top: '50px',
-                left: '109px',
-                opacity: 1
-              }}
-            >
-              <span className="text-[#A3A3A3] text-[13px] md:text-[15px] font-medium leading-none">
-                Te damos la bienvenida a Parent In
-              </span>
-              <h1 className="text-[32px] md:text-5xl font-bold text-[#393939] font-serif leading-tight">
-                ¡Hola, Paola!
-              </h1>
-              <p className="text-[#A3A3A3] text-[13px] md:text-[15px] font-medium leading-none">
-                Tu acompañamiento personalizado
-              </p>
-            </div>
           </header>
           <section className="px-6 mt-4 md:mt-0 pb-10 md:px-10">
             <Outlet />

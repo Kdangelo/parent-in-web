@@ -105,7 +105,7 @@ export default function SidebarComponent({ open, onClose }: SidebarProps) {
         
           {/* Logout */}
           <button
-            onClick={logout}
+            onClick={() => logout()}
             className="mt-auto mb-10 flex items-center gap-3 px-4 group 
                       w-[305px] h-[38px] rounded-[10px] 
                       transition-all duration-[300ms] ease-out
