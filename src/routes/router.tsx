@@ -9,8 +9,6 @@ import EmailVerificationPage from "../pages/EmailVerificationPage";
 
 import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine";
 import DashboardLayout from "../components/Dashboard/MainLayout/DashboardLayout";
-import CheckIn from "../components/Dashboard/MainLayout/CheckIn"; //Borrar antes de subir
-
 
 const router = createBrowserRouter([
     {
