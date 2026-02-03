@@ -1,5 +1,11 @@
 import axios from "axios";
 import { getCookie } from "../utils/cookie";
+import { tokenExpiredUtils } from "../utils/tokenExpiredUtils";
+
+
+
+import Swal from "sweetalert2";
+import { userStore } from "../stores/userStore";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -9,9 +15,26 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(
-    config => {
+    async config => {
+        
         const token = getCookie(import.meta.env.VITE_TOKEN_KEY);
+        
         if(token){
+
+            if(tokenExpiredUtils(token)) {
+                
+                userStore.getState().logout();
+
+                await Swal.fire({
+                    title: 'Sesión caducada',
+                    text: 'Tu sesión ha expirado por seguridad. Ingresa nuevamente.',
+                    icon: 'warning',
+                    confirmButtonColor: '#3085d6',
+                });
+                window.location.href = "/login";
+                return Promise.reject(new Error('Token expired'));
+            }
+
             config.headers.Authorization = `Bearer ${token}`;
         }
 
