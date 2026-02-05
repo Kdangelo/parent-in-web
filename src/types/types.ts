@@ -6,6 +6,7 @@ export type User = {
     password?: string;
     enable: boolean;
     isOnboardingCompleted: boolean;
+    currentStage: string;
 }
 
 export type UserCreate = User & { passwordConfirm: string };

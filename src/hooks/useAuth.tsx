@@ -48,6 +48,7 @@ export const useAuth = () => {
     useEffect(() => {
         if(token && !user) {
             loadProfile();
+            console.log(user, token);
         }
     }, [token, user, loadProfile]);
 
