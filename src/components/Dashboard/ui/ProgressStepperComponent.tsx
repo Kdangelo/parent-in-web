@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sprout, Baby, Briefcase } from 'lucide-react';
 
-const ProgressStepperComponent: React.FC<{ currentStep?: number; progressPercentage?: number }> = ({ currentStep = 1, progressPercentage = 33 }) => {
+const ProgressStepperComponent: React.FC<{ currentStep?: number; progressPercentage?: number }> = ({ currentStep , progressPercentage = 33 }) => {
   
   const stages = [
     { id: 1, label: 'Pre licencia', icon: <Sprout size={24} className="text-green-500" /> },
@@ -23,7 +23,7 @@ const ProgressStepperComponent: React.FC<{ currentStep?: number; progressPercent
           <div key={stage.id} className="flex flex-col items-center gap-2 z-10">
             {/* Círculo del Icono */}
             <div className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-colors duration-300 ${
-              currentStep >= stage.id 
+              currentStep && currentStep >= stage.id 
                 ? 'border-slate-400 bg-white shadow-md' 
                 : 'border-gray-100 bg-gray-50 opacity-40'
             }`}>
@@ -31,7 +31,7 @@ const ProgressStepperComponent: React.FC<{ currentStep?: number; progressPercent
             </div>
             {/* Texto de la Etapa */}
             <span className={`text-sm font-semibold transition-colors ${
-              currentStep >= stage.id ? 'text-slate-500' : 'text-gray-300'
+              currentStep && currentStep >= stage.id ? 'text-slate-500' : 'text-gray-300'
             }`}>
               {stage.label}
             </span>

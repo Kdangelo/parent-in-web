@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import ProgressStepperComponent from "./ui/ProgressStepperComponent";
 
-const DashBoardHomeComponent: React.FC = () => {
-    const {user} = useAuth();
+const DashBoardHomeComponent: React.FC =  () => {
+    const { loadProfile, user } = useAuth();
 
+    useEffect(() => {
+        const fetchProfile = async () => {
+            await loadProfile();
+        };
+        fetchProfile();
+    }, [loadProfile]);
+    
+    const step = user?.currentStage === 'PRE_LICENSE' ? 1 : user?.currentStage === 'LICENSE' ? 2 : 3;  
+    let percentage;
+    switch(step) {
+        case 1:
+            percentage = 10;
+            break;
+        case 2:
+            percentage = 50;
+            break;
+        case 3:
+            percentage = 100;
+            break;
+        default:
+            percentage = 0;
+    }
   return (
     
         <div
@@ -26,7 +48,7 @@ const DashBoardHomeComponent: React.FC = () => {
         <p className="text-[#A3A3A3] text-[13px] md:text-[15px] font-medium leading-none">
             Tu acompañamiento personalizado
         </p>
-        <ProgressStepperComponent currentStep={1} progressPercentage={33} />
+        <ProgressStepperComponent currentStep={step} progressPercentage={percentage} />
         </div>
 
   );
