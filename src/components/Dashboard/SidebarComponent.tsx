@@ -33,7 +33,7 @@ export default function SidebarComponent({ open, onClose }: SidebarProps) {
   const getTextStyle = (isActive: boolean) => ({
     width: '185px',
     height: '22px',
-    color: isActive ? '#3B4CB8' : '#3939394D', 
+    color: isActive ? '#949CB1' : '#3939394D', 
     fontWeight: '600',
     fontSize: '16px',
     lineHeight: '140%',
@@ -56,17 +56,10 @@ export default function SidebarComponent({ open, onClose }: SidebarProps) {
         
         {/* Logo Section */}
         <div className=" pt-8 px-8 pb-4">
-          <img src={Logo} alt="Parent In" className="h-10 w-auto w-[265px] h-[57px]" />
+          <img src={Logo} alt="Parent In" className="w-[265px] h-[57px]" />
         </div>
-         <div 
-          style={{
-            width: '355px',
-            height: '0px',
-            borderTop: '1px solid #8F9AB2',
-            opacity: 1,
-          }}
-          className="mb-[44px]"
-        />
+
+        <div className="mb-[44px] border-t border-[#8F9AB2] w-[355px]" />
 
         {/* Navigation Container */}
         <div className="flex-1 flex flex-col items-start px-[25px]">           
@@ -75,26 +68,22 @@ export default function SidebarComponent({ open, onClose }: SidebarProps) {
               <NavLink
                 key={path}
                 to={path}
+                end={path === "/dashboard"} 
                 onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 group
-                  /* Dimensiones exactas del item activo para que no sobresalga del área de 305px */
                   w-[305px] h-[38px] rounded-[10px]
                   transition-all duration-[300ms] ease-out
-                  ${isActive ? "bg-[#EDF0F9]" : "bg-transparent hover:bg-[#EDF0F9]/60"}`
+                  ${isActive ? "bg-[#EDF0F9]" : "bg-transparent hover:bg-[#EDF0F9]/40"}`
                 }
               >
                 {({ isActive }) => (
                   <>
                     <Icon 
-                      className={`w-6 h-6 flex-shrink-0 transition-colors duration-[300ms] 
-                        ${!isActive && "group-hover:text-[#3B4CB8]"}`} 
-                      style={{ color: isActive ? '#3B4CB8' : undefined }} 
+                      className="w-6 h-6 flex-shrink-0 transition-colors duration-[300ms]" 
+                      style={{ color: isActive ? '#949CB1' : '#3939394D' }} 
                     />
-                    <span 
-                      style={getTextStyle(isActive)} 
-                      className={!isActive ? "group-hover:text-[#3B4CB8]" : ""}
-                    >
+                    <span style={getTextStyle(isActive)}>
                       {label}
                     </span>
                   </>
@@ -103,26 +92,19 @@ export default function SidebarComponent({ open, onClose }: SidebarProps) {
             ))}
           </nav>
         
-          {/* Logout */}
           <button
             onClick={() => logout()}
             className="mt-auto mb-10 flex items-center gap-3 px-4 group 
                       w-[305px] h-[38px] rounded-[10px] 
                       transition-all duration-[300ms] ease-out
-                      hover:bg-[#EDF0F9]/60"
+                      hover:bg-[#EDF0F9]/40"
           >
             <IconLogout 
-              className="w-6 h-6 transition-colors group-hover:text-[#3B4CB8]" 
-              /* Quitamos el style fijo y dejamos que use el color del texto del padre o el definido aquí */
-              style={{ color: '#393939' }} 
+              className="w-6 h-6 transition-colors" 
+              style={{ color: '#3939394D' }} 
             />
             <span 
-              style={{
-                ...getTextStyle(false),
-                color: '#393939',
-                opacity: 1
-              }} 
-              className="group-hover:text-[#3B4CB8]"
+              style={getTextStyle(false)}
             >
               Cerrar sesión
             </span>
