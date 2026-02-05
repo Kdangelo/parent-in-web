@@ -10,6 +10,8 @@ import OnboardingFlowEngine from "../components/OnBoarding/OnboardingFlowEngine"
 import DashboardLayout from "../components/Dashboard/MainLayout/DashboardLayout";
 import DashBoardHomeComponent from "../components/Dashboard/DashBoardHomeComponent";
 import ProtectedRoute from "./ProtectedRoute";
+import CheckIn from "../components/Dashboard/MainLayout/CheckIn";
+import Checklist from "../components/Dashboard/MainLayout/Checklist";
 
 const router = createBrowserRouter([
     {
@@ -34,8 +36,8 @@ const router = createBrowserRouter([
                         children: [
                             { index: true, element: <DashBoardHomeComponent /> },
                             { path: 'resources', element: <div>Resources</div> },
-                            { path: 'checklist', element: <div>Checklist</div> },
-                            { path: 'checkin', element: <div>Check In</div> },
+                            { path: 'checklist', element: <Checklist /> },
+                            { path: 'checkin', element: <CheckIn /> },
                             { path: 'community', element: <div>Community</div> },
                             { path: 'agenda', element: <div>Agenda</div> },
                             { path: 'settings', element: <div>Settings</div> }

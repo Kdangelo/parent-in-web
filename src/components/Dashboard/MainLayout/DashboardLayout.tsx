@@ -16,11 +16,11 @@ export default function DashboardLayout() {
         />
 
         <main className="flex-1 flex flex-col min-w-0">
-          <header className="relative w-full h-[140px] md:h-auto md:px-10 md:pt-10">
-            <div className="absolute top-[62px] left-8 md:hidden">
+          <header className="relative w-full md:px-10 md:pt-10">
+            <div className="absolute top-8 left-4 md:hidden z-10">
               <button 
                 onClick={() => setSidebarOpen(true)}
-                className="focus:outline-none"
+                className="focus:outline-none p-2"
               >
                 <EllipsisVerticalIcon className="h-8 w-8 text-[#A5B1C2]" /> 
               </button>
