@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import type { AuthUser } from "./types";
 import { getCookie, removeCookie, setCookie } from "../utils/cookie";
+import { tokenExpiredUtils } from "../utils/tokenExpiredUtils";
+import Swal from "sweetalert2";
 
-export const userStore = create<AuthUser>((set) => {
+export const userStore = create<AuthUser>((set, get) => {
   const initialToken = getCookie(import.meta.env.VITE_TOKEN_KEY);
   return {
     //estado inicial
@@ -42,5 +44,20 @@ export const userStore = create<AuthUser>((set) => {
       set({ userTypeStore });
     },
 
+    checkTokenExpiration: () => {
+      const {token, logout} = get()
+
+      if(tokenExpiredUtils(token)) {
+
+        Swal.fire({
+            icon: "warning",
+            title: "Sesión expirada",
+            text: "Debes volver a iniciar sesión",
+        });
+        logout();
+        window.location.href = "/login";
+      }
+
+    }
   };
 });

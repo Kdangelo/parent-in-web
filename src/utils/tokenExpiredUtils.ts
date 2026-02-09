@@ -1,6 +1,6 @@
 import {jwtDecode} from 'jwt-decode';
 
-export const tokenExpiredUtils = (token: string | null): boolean | undefined => {
+export const tokenExpiredUtils = (token: string | null): boolean => {
 
     if(!token) return true;
 
@@ -8,18 +8,19 @@ export const tokenExpiredUtils = (token: string | null): boolean | undefined => 
         
         const decodedToken = jwtDecode<{ exp: number }>(token);
 
-        const currentTime = Math.floor(Date.now() / 1000);
-
-        if(typeof decodedToken.exp !== 'number') {
+        if(!decodedToken.exp) {
             return true;
         }
+
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        // if(typeof decodedToken.exp !== 'number') {
+        //     return true;
+        // }
 
         return decodedToken.exp < currentTime;
 
-    } catch (error) {
-        if(error instanceof Error) {
-            console.error('Error decoding token:', error.message);
-            return true;
-        }
+    } catch {
+        return true;
     }
 }
