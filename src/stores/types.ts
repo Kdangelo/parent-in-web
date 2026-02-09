@@ -14,6 +14,7 @@ interface AuthActions {
     updateUser: (user: Partial<User>) => void;
     setToken: (token: string) => void;
     setUserTypeStore: (userTypeStore: string) => void;
+    checkTokenExpiration: () => void;
 }
 
 export type AuthUser = AuthState & AuthActions;

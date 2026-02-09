@@ -2,8 +2,6 @@ import axios from "axios";
 import { getCookie } from "../utils/cookie";
 import { tokenExpiredUtils } from "../utils/tokenExpiredUtils";
 
-
-
 import Swal from "sweetalert2";
 import { userStore } from "../stores/userStore";
 
@@ -14,27 +12,40 @@ const api = axios.create({
     },
 });
 
+let isShowingExpiredAlert = false;
+
 api.interceptors.request.use(
     async config => {
         
+        const { logout } = userStore.getState();
+
         const token = getCookie(import.meta.env.VITE_TOKEN_KEY);
         
-        if(token){
-
-            if(tokenExpiredUtils(token)) {
-                
-                userStore.getState().logout();
-
-                await Swal.fire({
-                    title: 'Sesión caducada',
-                    text: 'Tu sesión ha expirado por seguridad. Ingresa nuevamente.',
-                    icon: 'warning',
-                    confirmButtonColor: '#3085d6',
-                });
-                window.location.href = "/login";
-                return Promise.reject(new Error('Token expired'));
+        
+        if(token && tokenExpiredUtils(token)) {
+            
+            if (isShowingExpiredAlert) {
+                return Promise.reject("Token expirado (alerta ya mostrada)");
             }
 
+            isShowingExpiredAlert = true;
+            await Swal.fire({
+                icon: "warning",
+                title: "Sesión expirada",
+                text: "Debes volver a iniciar sesión",
+                confirmButtonText: 'Ir a la página de login',
+                allowOutsideClick: false, // Evita que la cierren haciendo clic fuera
+                allowEscapeKey: false, // Evita que la cierren con la tecla Escape
+            });
+
+            logout();
+            isShowingExpiredAlert = false; 
+            window.location.href = "/login";
+
+            return Promise.reject("Sesión expirada");
+        }
+
+        if(token){
             config.headers.Authorization = `Bearer ${token}`;
         }
 
