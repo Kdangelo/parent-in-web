@@ -1,5 +1,5 @@
 // OnboardingFlowEngine.tsx (Componente Único)
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 
 import DynamicFieldRenderer from "./DynamicFieldRenderer"; // Componente hijo
 import type { Answers, FlowDefinition } from "./types";
@@ -75,7 +75,25 @@ const OnboardingFlowEngine: React.FC = () => {
       // Enviar a POST /api/onboarding/complete
       try {
         setLoading(true);
-        await submitOnboarding(userTypeStore, newAnswers);
+        if(userTypeStore === "organization") {
+          await Swal.fire({
+            title: "Gracias por tu interés en ParentIn",
+            text: "La información fue registrada correctamente. Nos pondremos en contacto para explorar cómo podemos acompañar a tu organización.",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          });
+          navigate("/login");
+        } else if(userTypeStore === "professional") {
+          await Swal.fire({
+            title: "Gracias por tu interés en ParentIn",
+            text: "Recibimos tu información y será considerada para futuras oportunidades.",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          });
+          navigate("/login");
+        } else {
+          await submitOnboarding(userTypeStore, newAnswers);
+        }
         setLoading(false);
       } catch (error) {
         //(setLoading(false);
