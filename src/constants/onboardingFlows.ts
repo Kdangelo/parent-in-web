@@ -441,6 +441,11 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           question: "¿Que tán flexible es tu organización para trabajar por objetivos, adaptar horarios y formas de trabajo? Escala del 1 al 5, donde 1 es muy insatisfactorio y 5 es muy satisfactorio.",
           saveTo: "flexibilityScore",
           nextStep: "11",
+          validation: {
+            minLength: 1,
+            maxLength: 5,
+            errorMessage: "Por favor ingresa un número entre 1 y 5",
+          },
         },
         "11": {
           id: "11",
@@ -448,6 +453,11 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           question: "¿Cómo evaluas el equilibrio entre trabajo y cuidado que hay dentro de la organizacion? Escala del 1 al 5, donde 1 es muy insatisfactorio y 5 es muy satisfactorio.",
           saveTo: "workLifeBalanceScore",
           nextStep: "12",
+          validation: {
+            minLength: 1,
+            maxLength: 5,
+            errorMessage: "Por favor ingresa un número entre 1 y 5",
+          },
         },
         "12": {
           id: "12",
@@ -455,6 +465,11 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           question: "¿Cómo evaluarías el nivel de apoyo emocional percibido en la organizacion? Escala del 1 al 5, donde 1 es muy insatisfactorio y 5 es muy satisfactorio.",
           saveTo: "emotionalSupportScore",
           nextStep: "13",
+          validation: {
+            minLength: 1,
+            maxLength: 5,
+            errorMessage: "Por favor ingresa un número entre 1 y 5",
+          },
         },
         "13": {
           id: "13",
@@ -608,7 +623,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
       },
       "3": {
         id: "3",
-        type: "number",
+        type: "text",
         question: "Precio estmimado (USD) por sesión o unidad de servicio. Este dato nos ayuda a ajustar tarifas y paquetes en función de la diversidad de perfiles.",
         saveTo: "estimatedPrice",
         nextStep: "4",
