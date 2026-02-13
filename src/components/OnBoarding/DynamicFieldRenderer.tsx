@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import type { StepDefinition } from "./types";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -109,13 +109,13 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
       // Clonamos el array para no mutar el estado de React directamente
       finalAnswer = Array.isArray(value) ? [...value] : [];
       const isOtherSelected = finalAnswer.some((v: string) =>
-        otherOptionValues.includes(v)
+        otherOptionValues.includes(v),
       );
 
       if (isOtherSelected) {
         // Quitamos los marcadores "otro/otra" y añadimos el texto libre
         finalAnswer = finalAnswer.filter(
-          (v: string) => !otherOptionValues.includes(v)
+          (v: string) => !otherOptionValues.includes(v),
         );
         if (otherText.trim()) {
           finalAnswer.push(otherText.trim());
@@ -146,8 +146,8 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
       typeof finalAnswer === "string"
         ? finalAnswer.trim().length > 0
         : Array.isArray(finalAnswer)
-        ? finalAnswer.length > 0
-        : !!finalAnswer;
+          ? finalAnswer.length > 0
+          : !!finalAnswer;
 
     // El botón es válido si hay contenido Y, si "Otro" está activo, el campo de texto tiene algo
     const isNextButtonEnabled =
@@ -167,11 +167,34 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
     } else {
       // Considerar reemplazar este alert por un Toast o SweetAlert2 después
       alert(
-        "Por favor, completa la respuesta correctamente antes de continuar."
+        "Por favor, completa la respuesta correctamente antes de continuar.",
       );
     }
   };
-  // ... (dentro de DynamicFieldRenderer, en el switch)
+
+  const validationError = useMemo(() => {
+    if (!step.validation) return null;
+
+    const rules = step.validation;
+    const numValue = Number(value);
+
+    // 1. Validación de Obligatoriedad
+    if (rules.required && (!value || value.toString().trim() === "")) {
+      return rules.errorMessage || "Este campo es obligatorio";
+    }
+
+    // 2. Validación de Rango (1 a 5)
+    if (rules.minLength !== undefined && numValue < rules.minLength) {
+      return `El valor debe ser al menos ${rules.minLength}`;
+    }
+    if (rules.maxLength !== undefined && numValue > rules.maxLength) {
+      return `El valor no puede ser mayor a ${rules.maxLength}`;
+    }
+
+    return null; // Si llegamos aquí, todo está bien
+  }, [value, step.validation]);
+
+  const isButtonDisabled = !!validationError || !value;
 
   switch (step.type) {
     case "select":
@@ -245,6 +268,7 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
     case "date":
     case "tel":
     case "email":
+    case "number":
       return (
         <div className="flex flex-col w-full animate-fadeIn">
           <div className="relative">
@@ -255,7 +279,7 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
               placeholder={step.placeholder || "Escribe aquí..."} // Soporte para placeholder desde el JSON
               autoFocus // UX: enfocar automáticamente al cargar el paso
               className={`
-            w-full p-4 text-lg bg-white border-2 rounded-xl transition-all duration-200 outline-none
+            w-full p-4 text-lg bg-white border-2 rounded-xl transition-all outline-none
             ${
               value
                 ? "border-blue-500 ring-2 ring-blue-100"
@@ -264,22 +288,25 @@ const DynamicFieldRenderer: React.FC<DynamicFieldRendererProps> = ({
           `}
             />
 
-            {/* Feedback visual simple si el campo es obligatorio */}
-            {step.validation?.required && !value && (
-              <p className="mt-2 text-sm text-gray-400 text-center">
-                Este campo es obligatorio
-              </p>
-            )}
+            {/* Mensaje de Error Dinámico */}
+            <div className="h-6 mt-2 text-center">
+              
+              {validationError && value && (
+                <p
+                  key={validationError} 
+                  className="text-red-500 text-sm font-medium animate-shake"
+                >
+                  {validationError}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Botón Siguiente (Centrado) */}
           <div className="pt-10 flex justify-center">
             <button
               onClick={handleSubmit}
-              // Validación: Deshabilitar si está vacío
-              disabled={
-                !value || (typeof value === "string" && value.trim() === "")
-              }
+              disabled = {isButtonDisabled}
               className={`
             py-4 px-14 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300 transform active:scale-95
             ${

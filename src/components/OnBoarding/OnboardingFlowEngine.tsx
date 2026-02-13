@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 import { submitOnboarding } from "../../services/onBoardingService";
 
 const OnboardingFlowEngine: React.FC = () => {
-  const { userTypeStore } = useAuth();
+  const { userTypeStore, logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -72,10 +72,42 @@ const OnboardingFlowEngine: React.FC = () => {
     }
 
     if (nextId === "final") {
-      // Enviar a POST /api/onboarding/complete
       try {
         setLoading(true);
-        await submitOnboarding(userTypeStore, newAnswers);
+
+        //Monmentaneamente se deja este flujo de condicionales para diferenciar el tipo de usuario
+        //Ya que por el momento la MVP solo contempla un Dashboard para el usuario parental,
+        //pero se deja la puerta abierta para que tanto el profesional como la organización puedan tener un mensaje de agradecimiento
+        //y cierre de su proceso de onboarding, sin necesidad de desarrollar un dashboard específico para ellos en esta etapa.
+        if (userTypeStore === "organization") {
+          alert(
+             userTypeStore +
+             JSON.stringify(newAnswers)
+          );
+          await Swal.fire({
+            title: "Gracias por tu interés en ParentIn",
+            text: "La información fue registrada correctamente. Nos pondremos en contacto para explorar cómo podemos acompañar a tu organización.",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          });
+          logout();
+          navigate("/login");
+        } else if (userTypeStore === "professional") {
+          alert(
+             userTypeStore +
+             JSON.stringify(newAnswers)
+          );
+          await Swal.fire({
+            title: "Gracias por tu interés en ParentIn",
+            text: "Recibimos tu información y será considerada para futuras oportunidades.",
+            icon: "success",
+            confirmButtonText: "Aceptar",
+          });
+          logout();
+          navigate("/login");
+        } else {
+          await submitOnboarding(userTypeStore, newAnswers);
+        }
         setLoading(false);
       } catch (error) {
         //(setLoading(false);
@@ -90,11 +122,6 @@ const OnboardingFlowEngine: React.FC = () => {
         });
         return;
       }
-      // alert(userTypeStore);
-      // alert(
-      //   "¡Onboarding completado! Gracias." +
-      //     JSON.stringify(newAnswers)
-      // );
     } else if (nextId) {
       setHistory((prevHistory) => [...prevHistory, nextId]); // Actualizar el historial
     }

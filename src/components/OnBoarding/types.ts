@@ -15,7 +15,6 @@ export type StepDefinition = {
   type: FieldType;
   question: string;
   options?: { value: string; label: string }[];
-  //validation: ValidationRules;
   nextStep?: string | null;
   nextStepByAnswer?: Record<string, string>; // Lógica de bifurcación
   saveTo: string;
