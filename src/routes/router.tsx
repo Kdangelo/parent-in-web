@@ -12,6 +12,7 @@ import DashBoardHomeComponent from "../components/Dashboard/DashBoardHomeCompone
 import ProtectedRoute from "./ProtectedRoute";
 import CheckIn from "../components/Dashboard/MainLayout/CheckIn";
 import Checklist from "../components/Dashboard/MainLayout/Checklist";
+import Agenda from "../components/Dashboard/MainLayout/Agenda";
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
                             { path: 'checklist', element: <Checklist /> },
                             { path: 'checkin', element: <CheckIn /> },
                             { path: 'community', element: <div>Community</div> },
-                            { path: 'agenda', element: <div>Agenda</div> },
+                            { path: 'agenda', element: <Agenda /> },
                             { path: 'settings', element: <div>Settings</div> }
                         ]
                     },

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Lic. Valentina Stefano",
+    "profesion": "Coach | Máster en Cs. del Comportamiento",
+    "descripcion": "Experta en comportamiento humano y educación, especializada en procesos de cambio y desarrollo personal.",
+    "foto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Valentina",
+    "rating": 5.0,
+    "categoria": ["Laboral", "Personal"],
+    "testimonio": "Me acompañó en un proceso de cambio profundo, aprendiendo a cuidar mi bienestar personal y laboral."
+  },
+  {
+    "id": 2,
+    "nombre": "Lic. Martina Cardahi",
+    "profesion": "Coach Parental y Profesional",
+    "descripcion": "Coach especializada en género y transiciones parentales —maternidad, paternidad y crecimiento profesional— integrando desarrollo de carrera y bienestar. En sesiones 1:1 te ayuda a diseñar una estrategia personal y profesional sostenible, alineada con tus valores y tu momento vital.",
+    "foto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Martina",
+    "rating": 5.0,
+    "categoria": ["Personal", "Laboral"],
+    "testimonio": "Me ayudó en mi transición a la maternidad sin perder mi desarrollo profesional."
+  },
+  {
+    "id": 3,
+    "nombre": "Lic. Lila Miler",
+    "profesion": "Puericultora | Docente",
+    "descripcion": "Puericultora y docente de nivel inicial, acompaña procesos de lactancia y crianza desde el embarazo hasta la vuelta al trabajo, integrando información actualizada y mirada respetuosa. En sesiones 1:1 brinda apoyo personalizado para transitar cada etapa con mayor seguridad.",
+    "foto": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lila",
+    "rating": 5.0,
+    "categoria": ["Familiar", "Personal"],
+    "testimonio": "Encontré información clara y apoyo real para la lactancia y la vuelta al trabajo."
+  }
+]
