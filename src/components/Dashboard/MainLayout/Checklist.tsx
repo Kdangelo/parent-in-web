@@ -8,7 +8,7 @@ import {
   Seedling,
 } from "../../Icons/Icons";
 import AddTaskModal from "./Modal/AddTaskModal";
-import taskDataRaw from "../../../../tasksData.json";
+import taskDataRaw from "../../../../Jsons/tasksData.json";
 
 interface RawTask {
     id: number;

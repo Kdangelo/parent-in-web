@@ -1,0 +1,41 @@
+[
+  {
+    "id": "past-1",
+    "fecha": "12 de enero, 2026",
+    "hora": "10:00 AM",
+    "modalidad": "Virtual",
+    "estado": "Completada",
+    "profesional": {
+      "id": 1,
+      "nombre": "Dra. Lucía Méndez",
+      "foto": "https://randomuser.me/api/portraits/women/44.jpg",
+      "profesion": "Psicóloga Perinatal"
+    }
+  },
+  {
+    "id": "past-2",
+    "fecha": "28 de diciembre, 2025",
+    "hora": "16:30 PM",
+    "modalidad": "Presencial",
+    "estado": "Completada",
+    "profesional": {
+      "id": 2,
+      "nombre": "Lic. Martín Paz",
+      "foto": "https://randomuser.me/api/portraits/men/32.jpg",
+      "profesion": "Especialista en Lactancia"
+    }
+  },
+  {
+    "id": "past-3",
+    "fecha": "15 de noviembre, 2025",
+    "hora": "09:00 AM",
+    "modalidad": "Virtual",
+    "estado": "Completada",
+    "profesional": {
+      "id": 3,
+      "nombre": "Dra. Sofía Reyes",
+      "foto": "https://randomuser.me/api/portraits/women/68.jpg",
+      "profesion": "Nutricionista Infantil"
+    }
+  }
+]
