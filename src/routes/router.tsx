@@ -13,6 +13,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import CheckIn from "../components/Dashboard/MainLayout/CheckIn";
 import Checklist from "../components/Dashboard/MainLayout/Checklist";
 import Agenda from "../components/Dashboard/MainLayout/Agenda";
+import Recursos from "../components/Dashboard/MainLayout/Recursos";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
                         element: <DashboardLayout />,
                         children: [
                             { index: true, element: <DashBoardHomeComponent /> },
-                            { path: 'resources', element: <div>Resources</div> },
+                            { path: 'resources', element: <Recursos /> },
                             { path: 'checklist', element: <Checklist /> },
                             { path: 'checkin', element: <CheckIn /> },
                             { path: 'community', element: <div>Community</div> },

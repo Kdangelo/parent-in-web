@@ -1,6 +1,5 @@
 import React from 'react';
 
-// 1. Icono Inicio (gravity-ui_house.svg)
 export const IconInicio = (props: React.SVGProps<SVGSVGElement>) => (
   <svg 
     width="24" 
@@ -272,8 +271,6 @@ export const ProgressBar = ({ progress = 40 }: { progress?: number }) => (
   </svg>
 );
 
-// Dentro de Icons.tsx
-
 export const Seedling = ({ className }: { className?: string }) => (
   <svg 
     width="30" 
@@ -299,8 +296,6 @@ export const Seedling = ({ className }: { className?: string }) => (
     </defs>
   </svg>
 );
-
-// Agregar a Icons.tsx
 
 export const IconClock = ({ className }: { className?: string }) => (
   <svg 
@@ -418,7 +413,7 @@ export const IconClose = ({ className = "" }: { className?: string }) => (
   >
     <path 
       d="M38.2188 13.0313L32.0937 6.90625C31.8646 6.67708 31.5729 6.5625 31.2187 6.5625C30.8646 6.5625 30.5729 6.67708 30.3437 6.90625C30.1146 7.13542 30 7.42708 30 7.78125C30 8.13542 30.1146 8.42708 30.3437 8.65625L36.4688 14.7812L30.3437 20.9063C30.1146 21.1354 30 21.4271 30 21.7813C30 22.1354 30.1146 22.4271 30.3437 22.6563C30.5729 22.8854 30.8646 23 31.2187 23C31.5729 23 31.8646 22.8854 32.0937 22.6563L38.2188 16.5312L44.3437 22.6563C44.5729 22.8854 44.8646 23 45.2188 23C45.5729 23 45.8646 22.8854 46.0937 22.6563C46.3229 22.4271 46.4375 22.1354 46.4375 21.7813C46.4375 21.4271 46.3229 21.1354 46.0937 20.9063L39.9687 14.7812L46.0937 8.65625C46.3229 8.42708 46.4375 8.13542 46.4375 7.78125C46.4375 7.42708 46.3229 7.13542 46.0937 6.90625C45.8646 6.67708 45.5729 6.5625 45.2188 6.5625C44.8646 6.5625 44.5729 6.67708 44.3437 6.90625L38.2188 13.0313Z" 
-      fill="currentColor" // Cambiado a currentColor para que herede el color del texto
+      fill="currentColor"
     />
   </svg>
 );
@@ -443,10 +438,6 @@ export const IconVirtual = ({ className, style }: { className?: string; style?: 
   </svg>
 );
 
-// Icons.tsx
-
-// El círculo verde de confirmación (Paso 4)
-// Busca tu IconCheckCircle y cámbialo a esto:
 export const IconCheckCircle = ({ className = "" }: { className?: string }) => (
   <svg 
     width="95" 
@@ -454,11 +445,11 @@ export const IconCheckCircle = ({ className = "" }: { className?: string }) => (
     viewBox="0 0 95 95" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
-    className={className} // <--- Esto permite que Tailwind funcione
+    className={className}
   >
     <path 
       d="M67.1808 24.7435C66.2719 24.2384 65.2724 23.9172 64.2394 23.7984..." 
-      fill="currentColor" // <--- Cambia el color fijo por currentColor
+      fill="currentColor"
     />
   </svg>
 );
@@ -514,5 +505,39 @@ export const IconCancelSesion = ({ className = "", style = {} }) => (
   </svg>
 );
 
+/// Icono de Lectura (SVG Libro)
+export const IconLectura = ({ className }: { className?: string }) => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M5 18.3337H17.5V16.667H5.01C4.625 16.657 4.16667 16.5045 4.16667 15.8337C4.16667 15.1628 4.625 15.0103 5.01 15.0003H17.5V3.33366C17.5 2.41449 16.7525 1.66699 15.8333 1.66699H5C3.995 1.66699 2.5 2.33283 2.5 4.16699V15.8337C2.5 17.6678 3.995 18.3337 5 18.3337ZM4.16667 6.66699V4.16699C4.16667 3.49616 4.625 3.34366 5 3.33366H15.8333V13.3337H4.16667V6.66699Z" fill="currentColor"/>
+    <path d="M6.66675 5H14.1667V6.66667H6.66675V5Z" fill="currentColor"/>
+  </svg>
+);
 
+// Icono de Videos (SVG Reproductor)
+export const IconVideoFilter = ({ className }: { className?: string }) => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M11.6667 9.99967L8.75 11.6663V8.33301L11.6667 9.99967Z" fill="currentColor" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1.66675 10.5897V9.40967C1.66675 6.99717 1.66675 5.79051 2.42091 5.01467C3.17591 4.23801 4.36425 4.20467 6.74008 4.13717C7.86508 4.10551 9.01508 4.08301 10.0001 4.08301C10.9851 4.08301 12.1342 4.10551 13.2601 4.13717C15.6359 4.20467 16.8242 4.23801 17.5784 5.01467C18.3326 5.79134 18.3334 6.99801 18.3334 9.40967V10.5888C18.3334 13.0022 18.3334 14.208 17.5792 14.9847C16.8242 15.7605 15.6367 15.7947 13.2601 15.8613C12.1351 15.8938 10.9851 15.9163 10.0001 15.9163C9.01508 15.9163 7.86591 15.8938 6.74008 15.8613C4.36425 15.7947 3.17591 15.7613 2.42091 14.9847C1.66591 14.208 1.66675 13.0013 1.66675 10.5897Z" stroke="currentColor" strokeWidth="1.25"/>
+  </svg>
+);
 
+// Icono de Lupa (Buscador)
+export const IconSearch = ({ className }: { className?: string }) => (
+  <svg 
+    width="43" 
+    height="43" 
+    viewBox="0 0 43 43" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    className={className}
+  >
+    <path 
+      d="M30.0002 30L25.6572 25.657M25.6572 25.657C26.4001 24.9141 26.9894 24.0321 27.3914 23.0615C27.7935 22.0909 28.0004 21.0506 28.0004 20C28.0004 18.9494 27.7935 17.909 27.3914 16.9384C26.9894 15.9678 26.4001 15.0858 25.6572 14.343C24.9143 13.6001 24.0324 13.0108 23.0618 12.6087C22.0911 12.2067 21.0508 11.9998 20.0002 11.9998C18.9496 11.9998 17.9093 12.2067 16.9387 12.6087C15.968 13.0108 15.0861 13.6001 14.3432 14.343C12.8429 15.8433 12 17.8782 12 20C12 22.1217 12.8429 24.1566 14.3432 25.657C15.8435 27.1573 17.8784 28.0002 20.0002 28.0002C22.122 28.0002 24.1569 27.1573 25.6572 25.657Z" 
+      stroke="currentColor" 
+      strokeOpacity="0.3" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+    />
+  </svg>
+);
