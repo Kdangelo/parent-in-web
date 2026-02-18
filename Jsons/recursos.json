@@ -1,0 +1,176 @@
+[
+  {
+    "id": 1,
+    "tipo": "Video",
+    "titulo": "Matrescence",
+    "autoria": "Alexandra Sacks",
+    "duracion": "6 min",
+    "url": "https://www.youtube.com/watch?v=jOsX_HnJtHU",
+    "categoria": "Emoción"
+  },
+  {
+    "id": 2,
+    "tipo": "Video",
+    "titulo": "Así cambia el cerebro de las madres",
+    "autoria": "Susana Carmona",
+    "duracion": "16 min",
+    "url": "https://www.youtube.com/watch?v=Akp-sq37i8s",
+    "categoria": "Cuerpo"
+  },
+  {
+    "id": 3,
+    "tipo": "Video",
+    "titulo": "¿Como acompañar los puerperios?",
+    "autoria": "Laura Gutman",
+    "duracion": "40 min",
+    "url": "https://www.youtube.com/watch?v=9oFl3UW9U6E",
+    "categoria": "Crianza"
+  },
+  {
+    "id": 4,
+    "tipo": "Video",
+    "titulo": "How to Swaddle a Baby",
+    "autoria": "Moms on Call",
+    "duracion": "3 min",
+    "url": "https://www.youtube.com/watch?v=RhsYw61ZsO8",
+    "categoria": "Crianza"
+  },
+  {
+    "id": 5,
+    "tipo": "Video",
+    "titulo": "Soothing Baby Techniques",
+    "autoria": "Moms on Call",
+    "duracion": "3 min",
+    "url": "https://www.youtube.com/watch?v=-k-32S6i0xQ",
+    "categoria": "Crianza"
+  },
+  {
+    "id": 6,
+    "tipo": "Video",
+    "titulo": "Basic Baby Care: 0-6 months",
+    "autoria": "Moms on Call",
+    "duracion": "3 min",
+    "url": "https://www.youtube.com/watch?v=hpDbPbx2Kwo",
+    "categoria": "Crianza"
+  },
+  {
+    "id": 7,
+    "tipo": "Video",
+    "titulo": "Diapering Techniques",
+    "autoria": "Moms on Call",
+    "duracion": "4 min",
+    "url": "https://www.youtube.com/watch?v=gFqpCvqQsk8",
+    "categoria": "Crianza"
+  },
+  {
+    "id": 8,
+    "tipo": "Video",
+    "titulo": "¿Delegar o explotar? Carga mental",
+    "autoria": "Ana Asensio - Malas Madres",
+    "duracion": "12 min",
+    "url": "https://www.youtube.com/watch?v=Zo8XpGW5k2k",
+    "categoria": "Laboral"
+  },
+  {
+    "id": 9,
+    "tipo": "Texto",
+    "etapa": "PRE LICENCIA",
+    "titulo": "Embarazo — Primer Trimestre: Cuerpo",
+    "subtitulo": "Una mirada integral desde el cuerpo",
+    "categoria": "Cuerpo",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "La placenta empieza a formarse pocos días después de la fecundación.",
+      "El volumen de sangre aumenta y el corazón trabaja de forma más intensa.",
+      "El consumo de ácido fólico es especialmente importante en esta etapa."
+    ]
+  },
+  {
+    "id": 10,
+    "tipo": "Texto",
+    "etapa": "PRE LICENCIA",
+    "titulo": "Embarazo — Primer Trimestre: Emoción",
+    "subtitulo": "Cambios internos y vivencia subjetiva",
+    "categoria": "Emoción",
+    "lecturaEstimada": "4 min",
+    "contenido": [
+      "Matrescencia: una etapa de transformación de la identidad.",
+      "Es habitual experimentar emociones contradictorias como entusiasmo e incertidumbre.",
+      "El primer trimestre es un período de mayor incertidumbre biológica."
+    ]
+  },
+  {
+    "id": 11,
+    "tipo": "Texto",
+    "etapa": "TRANSICIÓN",
+    "titulo": "Embarazo — Segundo Trimestre: Cuerpo",
+    "subtitulo": "Despertar sensorial y maduración cerebral",
+    "categoria": "Cuerpo",
+    "lecturaEstimada": "5 min",
+    "contenido": [
+      "El cerebro del bebé crea conexiones entre neuronas.",
+      "Hacia la semana 20, el bebé empieza a percibir el tacto.",
+      "El bebé comienza a percibir sabores a través del líquido amniótico."
+    ]
+  },
+  {
+    "id": 12,
+    "tipo": "Texto",
+    "etapa": "TERCER TRIMESTRE",
+    "titulo": "Prepararse para el encuentro: Emoción",
+    "subtitulo": "Intensidad y apertura",
+    "categoria": "Emoción",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "El 'yo' comienza a reorganizarse para incluir al bebé.",
+      "Deseo de encuentro y miedo al cambio conviven.",
+      "Aumenta la sensibilidad emocional y la necesidad de cuidado externo."
+    ]
+  },
+  {
+    "id": 13,
+    "tipo": "Texto",
+    "etapa": "ETAPA LICENCIA",
+    "titulo": "La licencia: Cuerpo",
+    "subtitulo": "Recuperar, sostener y adaptarse",
+    "categoria": "Cuerpo",
+    "lecturaEstimada": "6 min",
+    "contenido": [
+      "Una madre tarda más de cinco meses en sentirse físicamente estable.",
+      "El descanso fragmentado y la lactancia redefinen la disponibilidad.",
+      "Volver demasiado pronto interrumpe procesos de recuperación clave."
+    ]
+  },
+  {
+    "id": 14,
+    "tipo": "Texto",
+    "etapa": "ETAPA POST LICENCIA",
+    "titulo": "Volver al trabajo: Emoción",
+    "subtitulo": "Integrar identidades, no competir con ellas",
+    "categoria": "Laboral",
+    "lecturaEstimada": "5 min",
+    "contenido": [
+      "Volver al trabajo genera desubicación: ni del todo en casa, ni del todo en el trabajo.",
+      "Culpa, alivio y orgullo pueden coexistir sin contradicción.",
+      "A la jornada laboral se suma el trabajo de sostener el clima emocional del hogar."
+    ]
+  },
+  {
+    "id": 15,
+    "tipo": "Video",
+    "titulo": "Why paternity leave benefits everyone",
+    "autoria": "Shu Matsuo Post",
+    "duracion": "10 min",
+    "url": "https://www.youtube.com/watch?v=DCLoio-8d48",
+    "categoria": "Laboral"
+  },
+  {
+    "id": 16,
+    "tipo": "Video",
+    "titulo": "El poder de la vulnerabilidad",
+    "autoria": "Brene Brown",
+    "duracion": "20 min",
+    "url": "https://www.youtube.com/watch?v=iCvmsMzlF7o",
+    "categoria": "Emoción"
+  }
+]
