@@ -80,23 +80,35 @@ const OnboardingFlowEngine: React.FC = () => {
         //pero se deja la puerta abierta para que tanto el profesional como la organización puedan tener un mensaje de agradecimiento
         //y cierre de su proceso de onboarding, sin necesidad de desarrollar un dashboard específico para ellos en esta etapa.
         if (userTypeStore === "organization") {
-          alert(
-             userTypeStore +
-             JSON.stringify(newAnswers)
-          );
-          await Swal.fire({
-            title: "Gracias por tu interés en ParentIn",
-            text: "La información fue registrada correctamente. Nos pondremos en contacto para explorar cómo podemos acompañar a tu organización.",
-            icon: "success",
-            confirmButtonText: "Aceptar",
-          });
-          logout();
-          navigate("/login");
+          // alert(
+          //    userTypeStore +
+          //    JSON.stringify(newAnswers)
+          // );
+          
+          if(currentStep.id === "1"){
+            await submitOnboarding(userTypeStore, newAnswers, "/onboarding/organization/start");
+          } else {
+            await submitOnboarding(userTypeStore, newAnswers, `/onboarding/organization/step/${currentStep.id}`);
+          }
+
+          if(currentStep.nextStep === "final"){
+            await Swal.fire({
+              title: "Gracias por tu interés en ParentIn",
+              text: "La información fue registrada correctamente. Nos pondremos en contacto para explorar cómo podemos acompañar a tu organización.",
+              icon: "success",
+              confirmButtonText: "Aceptar",
+            });
+            logout();
+            navigate("/login");
+          }
         } else if (userTypeStore === "professional") {
-          alert(
-             userTypeStore +
-             JSON.stringify(newAnswers)
-          );
+          // alert(
+          //    userTypeStore +
+          //    JSON.stringify(newAnswers)
+          // );
+          
+          await submitOnboarding(userTypeStore, newAnswers);
+          
           await Swal.fire({
             title: "Gracias por tu interés en ParentIn",
             text: "Recibimos tu información y será considerada para futuras oportunidades.",

@@ -339,7 +339,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
             { value: "publico", label: "Sector Público / ONG" },
             { value: "otra", label: "Otro (especificar)" },
           ],
-          saveTo: "industry",
+          saveTo: "organizationIndustry",
           nextStep: "3",
         },
         "3": {
@@ -353,7 +353,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
             { value: "ong/orgpublico", label: "ONG/Organismo Público" },
             { value: "otra", label: "Otro (especificar)" },
           ],
-          saveTo: "companySize",
+          saveTo: "organizationSize",
           nextStep: "4",
         },
         "4": {
@@ -416,7 +416,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
             { value: "variabls", label: "Varía según el caso" },
             { value: "otra", label: "Otro (especificar)" },
           ],
-          saveTo: "daysOfLeave",
+          saveTo: "maternityLeaveDays",
           nextStep: "9",
         },
         "9": {
@@ -492,7 +492,7 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
             { value: "networkOfProfessionals", label: "Red de profesionales (puericultora, psicóloga perinaltal, etc.)" },
             { value: "otra", label: "Otro (especificar)" },
           ],
-          saveTo: "initiatives",
+          saveTo: "currentInitiatives",
           nextStep: "14",
         },
         "14": {
@@ -618,21 +618,21 @@ export const onboardingFlows: Record<string, FlowDefinition> = {
           { value: "technologyAndData", label: "Tecnología, IA, Datos" },
           { value: "other", label: "Otro (especificar)" },
         ],
-        saveTo: "specializations",
+        saveTo: "areasOfSpecialization",
         nextStep: "3",
       },
       "3": {
         id: "3",
         type: "text",
         question: "Precio estmimado (USD) por sesión o unidad de servicio. Este dato nos ayuda a ajustar tarifas y paquetes en función de la diversidad de perfiles.",
-        saveTo: "estimatedPrice",
+        saveTo: "estimatedPricePerSession",
         nextStep: "4",
       },
       "4": {
         id: "4",
         type: "text",
         question: "¿Qué te motiva a colaborar con Parent In? Contanos qué te interesa de este proyecto.",
-        saveTo: "motivationToCollaborate",
+        saveTo: "motivation",
         nextStep: "final",
       }
 
