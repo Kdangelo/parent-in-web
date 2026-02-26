@@ -1,176 +1,301 @@
 [
+  { "id": 1, "tipo": "Video", "categoria": "Matrescencia", "titulo": "Matrescence", "autoria": "Alexandra Sacks", "duracion": "6 min", "url": "https://www.youtube.com/watch?v=jOsX_HnJtHU" },
+  { "id": 2, "tipo": "Video", "categoria": "Neurociencia", "titulo": "Así cambia el cerebro de las madres", "autoria": "Susana Carmona", "duracion": "16 min", "url": "https://www.youtube.com/watch?v=Akp-sq37i8s" },
+  { "id": 3, "tipo": "Video", "categoria": "Puerperio", "titulo": "¿Como acompañar los puerperios?", "autoria": "Laura Gutman", "duracion": "40 min", "url": "https://www.youtube.com/watch?v=9oFl3UW9U6E" },
+  { "id": 4, "tipo": "Video", "categoria": "Cuidados", "titulo": "How to Swaddle a Baby", "autoria": "Moms on Call", "duracion": "3 min", "url": "https://www.youtube.com/watch?v=RhsYw61ZsO8" },
+  { "id": 5, "tipo": "Video", "categoria": "Cuidados", "titulo": "Soothing Baby Techniques", "autoria": "Moms on Call", "duracion": "3 min", "url": "https://www.youtube.com/watch?v=-k-32S6i0xQ" },
+  { "id": 6, "tipo": "Video", "categoria": "Cuidados", "titulo": "Basic Baby Care: 0-6 months", "autoria": "Moms on Call", "duracion": "3 min", "url": "https://www.youtube.com/watch?v=hpDbPbx2Kwo" },
+  { "id": 7, "tipo": "Video", "categoria": "Cuidados", "titulo": "Diapering Techniques", "autoria": "Moms on Call", "duracion": "4 min", "url": "https://www.youtube.com/watch?v=gFqpCvqQsk8" },
+  { "id": 8, "tipo": "Video", "categoria": "Cuidados", "titulo": "Bathing a newborn", "autoria": "Moms on Call", "duracion": "5 min", "url": "https://www.youtube.com/watch?v=RjYHJsTzd4Y" },
+  { "id": 9, "tipo": "Video", "categoria": "Alimentación", "titulo": "Everything You Need to Know About Introducing Solids", "autoria": "Moms on Call", "duracion": "6 min", "url": "https://www.youtube.com/watch?v=GeuYS82MN0k" },
+  { "id": 10, "tipo": "Video", "categoria": "Sueño", "titulo": "Ideal Sleep Environment", "autoria": "Moms on Call", "duracion": "4 min", "url": "https://www.youtube.com/watch?v=I2nWFCofEjU" },
+  { "id": 11, "tipo": "Video", "categoria": "Carga Mental", "titulo": "¿Delegar o explotar? Aliviar la carga mental sin culpas", "autoria": "Ana Asensio", "duracion": "15 min", "url": "https://www.youtube.com/watch?v=Zo8XpGW5k2k" },
+  { "id": 12, "tipo": "Video", "categoria": "Corresponsabilidad", "titulo": "Desigualdad y corresponsabilidad en el hogar", "autoria": "Laura Sagnier", "duracion": "18 min", "url": "https://www.youtube.com/watch?v=BqH96cIv8WQ" },
+  { "id": 13, "tipo": "Video", "categoria": "Conciliación", "titulo": "Why paternity leave benefits everyone", "autoria": "Shu Matsuo Post", "duracion": "12 min", "url": "https://www.youtube.com/watch?v=DCLoio-8d48" },
+  { "id": 14, "tipo": "Video", "categoria": "Conciliación", "titulo": "Blending Work and Family", "autoria": "Dr. Bahira Sharif Trask", "duracion": "14 min", "url": "https://www.youtube.com/watch?v=X1v2W7ZoLeQ" },
+  { "id": 15, "tipo": "Video", "categoria": "Vulnerabilidad", "titulo": "El poder de la vulnerabilidad", "autoria": "Brene Brown", "duracion": "20 min", "url": "https://www.youtube.com/watch?v=iCvmsMzlF7o" },
+  { "id": 16, "tipo": "Video", "categoria": "Emociones", "titulo": "Attend to fears and feelings", "autoria": "Brene Brown", "duracion": "10 min", "url": "https://www.youtube.com/watch?v=aT00grGbkQk" },
+  { "id": 17, "tipo": "Video", "categoria": "Neurociencia", "titulo": "Los sorprendentes efectos del embarazo", "autoria": "Ciencia", "duracion": "8 min", "url": "https://www.youtube.com/watch?v=LvPazkVqXvM" },
+  { "id": 18, "tipo": "Video", "categoria": "Emociones", "titulo": "Cómo afrontar los sentimientos", "autoria": "Marc Brackett", "duracion": "15 min", "url": "https://www.youtube.com/watch?v=4dG8aizqucc" },
+  { "id": 19, "tipo": "Video", "categoria": "Emociones", "titulo": "Emotional literacy", "autoria": "Marc Brackett", "duracion": "12 min", "url": "https://www.youtube.com/watch?v=t8UhRBwmvd4" },
+  { "id": 20, "tipo": "Video", "categoria": "Coaching", "titulo": "Emociones", "autoria": "Julio Olalla", "duracion": "25 min", "url": "https://www.youtube.com/watch?v=sOz_I5Sq-wA" },
+  { "id": 21, "tipo": "Video", "categoria": "Coaching", "titulo": "Sobre el coaching", "autoria": "Julio Olalla", "duracion": "20 min", "url": "https://www.youtube.com/watch?v=-Lkix-G9sjc" },
   {
-    "id": 1,
-    "tipo": "Video",
-    "titulo": "Matrescence",
-    "autoria": "Alexandra Sacks",
-    "duracion": "6 min",
-    "url": "https://www.youtube.com/watch?v=jOsX_HnJtHU",
-    "categoria": "Emoción"
-  },
-  {
-    "id": 2,
-    "tipo": "Video",
-    "titulo": "Así cambia el cerebro de las madres",
-    "autoria": "Susana Carmona",
-    "duracion": "16 min",
-    "url": "https://www.youtube.com/watch?v=Akp-sq37i8s",
-    "categoria": "Cuerpo"
-  },
-  {
-    "id": 3,
-    "tipo": "Video",
-    "titulo": "¿Como acompañar los puerperios?",
-    "autoria": "Laura Gutman",
-    "duracion": "40 min",
-    "url": "https://www.youtube.com/watch?v=9oFl3UW9U6E",
-    "categoria": "Crianza"
-  },
-  {
-    "id": 4,
-    "tipo": "Video",
-    "titulo": "How to Swaddle a Baby",
-    "autoria": "Moms on Call",
-    "duracion": "3 min",
-    "url": "https://www.youtube.com/watch?v=RhsYw61ZsO8",
-    "categoria": "Crianza"
-  },
-  {
-    "id": 5,
-    "tipo": "Video",
-    "titulo": "Soothing Baby Techniques",
-    "autoria": "Moms on Call",
-    "duracion": "3 min",
-    "url": "https://www.youtube.com/watch?v=-k-32S6i0xQ",
-    "categoria": "Crianza"
-  },
-  {
-    "id": 6,
-    "tipo": "Video",
-    "titulo": "Basic Baby Care: 0-6 months",
-    "autoria": "Moms on Call",
-    "duracion": "3 min",
-    "url": "https://www.youtube.com/watch?v=hpDbPbx2Kwo",
-    "categoria": "Crianza"
-  },
-  {
-    "id": 7,
-    "tipo": "Video",
-    "titulo": "Diapering Techniques",
-    "autoria": "Moms on Call",
-    "duracion": "4 min",
-    "url": "https://www.youtube.com/watch?v=gFqpCvqQsk8",
-    "categoria": "Crianza"
-  },
-  {
-    "id": 8,
-    "tipo": "Video",
-    "titulo": "¿Delegar o explotar? Carga mental",
-    "autoria": "Ana Asensio - Malas Madres",
-    "duracion": "12 min",
-    "url": "https://www.youtube.com/watch?v=Zo8XpGW5k2k",
-    "categoria": "Laboral"
-  },
-  {
-    "id": 9,
+    "id": 22,
     "tipo": "Texto",
-    "etapa": "PRE LICENCIA",
-    "titulo": "Embarazo — Primer Trimestre: Cuerpo",
-    "subtitulo": "Una mirada integral desde el cuerpo",
-    "categoria": "Cuerpo",
+    "categoria": "Pre licencia",
+    "titulo": "1º Trimestre: Mirada integral desde el cuerpo",
+    "subtitulo": "La base biológica",
+    "autoria": "Parent In",
     "lecturaEstimada": "3 min",
     "contenido": [
-      "La placenta empieza a formarse pocos días después de la fecundación.",
-      "El volumen de sangre aumenta y el corazón trabaja de forma más intensa.",
-      "El consumo de ácido fólico es especialmente importante en esta etapa."
+      "Durante las primeras semanas, el organismo de la mujer atraviesa una adaptación profunda para sostener el embarazo. Muchos sistemas comienzan a reorganizarse para acompañar este proceso.",
+      "La placenta empieza a formarse pocos días después de la fecundación y se vuelve funcional hacia el final del primer trimestre. Su función es regular hormonas clave que permiten que el embarazo continúe.",
+      "El volumen de sangre comienza a aumentar y el corazón trabaja de forma más intensa para cubrir las nuevas demandas del cuerpo.",
+      "En esta etapa, el cerebro del bebé produce neuronas a gran velocidad. Durante este período inicial, prioriza su desarrollo interno y requiere baja estimulación externa.",
+      "Fatiga, náuseas y mareos son experiencias comunes durante el primer trimestre y forman parte de la adaptación del cuerpo.",
+      "El consumo de ácido fólico es especialmente importante en esta etapa, ya que contribuye al desarrollo del sistema nervioso del bebé."
     ]
   },
   {
-    "id": 10,
+    "id": 23,
     "tipo": "Texto",
-    "etapa": "PRE LICENCIA",
-    "titulo": "Embarazo — Primer Trimestre: Emoción",
+    "categoria": "Pre licencia",
+    "titulo": "1º Trimestre: Mirada integral desde la emoción",
     "subtitulo": "Cambios internos y vivencia subjetiva",
-    "categoria": "Emoción",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "Matrescencia: una etapa de transformación.",
+      "El embarazo inicia un proceso de reorganización personal que puede influir en la identidad, las prioridades y la manera de habitar el día a día.",
+      "https://www.youtube.com/watch?v=jOsX_HnJtHU",
+      "Es habitual experimentar emociones contradictorias, como entusiasmo, incertidumbre o sensibilidad emocional, sin que esto sea una señal de algo “incorrecto”.",
+      "Durante esta etapa, muchas mujeres se sienten más permeables a lo que sucede a su alrededor. El acompañamiento y el contexto cobran especial importancia.",
+      "El primer trimestre también es un período de mayor incertidumbre biológica, una realidad que suele vivirse en silencio."
+    ]
+  },
+  {
+    "id": 24,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "1º Trimestre: Mirada integral desde el lenguaje",
+    "subtitulo": "Cómo se nombra y se comprende la experiencia",
+    "autoria": "Parent In",
+    "lecturaEstimada": "2 min",
+    "contenido": [
+      "La llamada “niebla mental” Algunas mujeres experimentan olvidos o dificultad para concentrarse. No se trata de una pérdida de capacidad, sino de una reorganización de la atención y los recursos mentales.",
+      "Poder poner en palabras la experiencia y conectarla con la propia historia ayuda a integrar los cambios que se están viviendo.",
+      "Las hormonas también comunican: preparan al cerebro y al sistema emocional para los vínculos que se están formando."
+    ]
+  },
+  {
+    "id": 25,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "2º Trimestre: Estabilidad física",
+    "subtitulo": "Despertar sensorial y maduración cerebral",
+    "autoria": "Parent In",
+    "lecturaEstimada": "5 min",
+    "contenido": [
+      "El segundo trimestre suele traer mayor estabilidad física para la madre, mientras el cuerpo continúa adaptándose de forma sostenida al embarazo.",
+      "El cerebro del bebé pasa de producir neuronas masivamente a crear conexiones entre ellas. Comienza una etapa clave de organización y refinamiento cerebral.",
+      "La glándula hipófisis de la madre aumenta significativamente su tamaño para regular la producción hormonal necesaria para el embarazo y la lactancia futura.",
+      "Mapas corporales en desarrollo: Hacia la semana 20, el cerebro del bebé empieza a construir mapas corporales, permitiéndole percibir el tacto de manera organizada.",
+      "Sueño fetal independiente: Durante este trimestre aparecen distintos estados de sueño. El bebé suele estar más activo cuando la madre descansa.",
+      "Nutrición y desarrollo cognitivo: Una alimentación equilibrada, que incluya pescado bajo en mercurio, favorece el desarrollo neurológico del bebé.",
+      "Aumento de peso esperado: Durante esta etapa, el aumento de peso suele ser progresivo y sostenido, acompañando el crecimiento fetal."
+    ]
+  },
+  {
+    "id": 26,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "2º Trimestre: Estabilidad emocional",
+    "subtitulo": "Vínculo, memoria y transformación identitaria",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "El bebé ya cuenta con la base neurológica para la memoria implícita. Reconoce y recuerda estímulos que se repiten, como voces, sonidos y melodías.",
+      "El estado emocional de la madre influye en el entorno hormonal del útero. El bienestar emocional es un factor relevante en este período.",
+      "Muchas mujeres describen este trimestre como una etapa de reorientación interna: una transición entre lo que eran y lo que están empezando a ser.",
+      "Mayor conexión con el embarazo: A medida que el cuerpo se estabiliza y el bebé se hace más perceptible, suele aumentar la sensación de vínculo."
+    ]
+  },
+  {
+    "id": 27,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "2º Trimestre: Desarrollo profundo",
+    "subtitulo": "#LENGUAJE La voz, el relato y el sentido",
+    "autoria": "Parent In",
+    "lecturaEstimada": "2 min",
+    "contenido": [
+      "La voz materna como referencia: Hacia el final del segundo trimestre, el bebé ya puede oír y reconocer la voz de su madre, que se convierte en un sonido familiar y regulador.",
+      "Los olvidos o la dificultad para concentrarse pueden continuar en esta etapa. No reflejan pérdida de capacidad, sino una redistribución de recursos mentales."
+    ]
+  },
+  {
+    "id": 28,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "3º Trimestre: Prepararse desde el cuerpo",
+    "subtitulo": "Afinamiento y preparación",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "El cerebro del bebé prioriza la conexión entre neuronas. Se organiza para nacer.",
+      "El cuerpo materno redistribuye energía y modifica el sueño y la postura  para prepararse para el parto.",
+      "El bebé reconoce voces, ritmos y movimientos. Aprende patrones del entorno intrauterino.",
+      "Los alimentos consumidos por la madre influyen en las futuras preferencias del bebé.",
+      "Las células fetales permanecen en el cuerpo materno de por vida, incluso en el cerebro y el corazón."
+    ]
+  },
+  {
+    "id": 29,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "3º Trimestre: Prepararse desde la emoción",
+    "subtitulo": "#EMOCIÓN Intensidad y apertura",
+    "autoria": "Parent In",
+    "lecturaEstimada": "2 min",
+    "contenido": [
+      "El 'yo' comienza a reorganizarse para incluir al bebé de forma permanente.",
+      "Deseo de encuentro y miedo al cambio conviven. No es contradicción, es adaptación.",
+      "Aumenta la sensibilidad emocional y la necesidad de cuidado externo.",
+      "La atención se orienta progresivamente hacia el bienestar del bebé."
+    ]
+  },
+  {
+    "id": 30,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "3º Trimestre: Prepararse desde el lenguaje",
+    "subtitulo": "#LENGUAJE Voz, ritmo y sentido",
+    "autoria": "Parent In",
+    "lecturaEstimada": "2 min",
+    "contenido": [
+      "El vínculo se construye a través del tono, el ritmo y la repetición, más que de las palabras.",
+      "El bebé reconoce la voz materna y sonidos familiares antes de nacer.",
+      "La forma en que la madre se cuenta esta etapa impacta en el vínculo temprano.",
+      "Los movimientos y respuestas del bebé generan un intercambio sensorial continuo."
+    ]
+  },
+  {
+    "id": 31,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "3º Trimestre: Preparar la transición",
+    "subtitulo": "Sostener el presente mientras se prepara el cambio",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "Durante esta etapa, el cuerpo sigue respondiendo a las demandas laborales mientras atraviesa un proceso de transformación profunda.",
+      "Pensar la transición, anticipar escenarios y organizar entregas requiere un esfuerzo extra que muchas veces no se nombra.",
+      "Licencias adecuadas y bien planificadas tienen un impacto real en el bienestar de la madre y del bebé, incluso antes del nacimiento.",
+      "Cuando esta etapa no está acompañada, aumenta el cansancio y se eleva el riesgo de desconexión con el trabajo."
+    ]
+  },
+  {
+    "id": 32,
+    "tipo": "Texto",
+    "categoria": "Pre licencia",
+    "titulo": "3º Trimestre: Cambio en la identidad",
+    "subtitulo": "La pre-licencia es también un tiempo de reacomodamiento interno.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "Es habitual sentir cierta desorientación: lo conocido empieza a quedar atrás y lo nuevo todavía no tiene forma.",
+      "Muchas mujeres temen perder lugar, ritmo o reconocimiento profesional, incluso antes de que eso ocurra.",
+      "Asumirse como trabajadora y madre —sin elegir uno u otro— permite transitar la etapa con más coherencia interna.",
+      "El compromiso profesional y el cuidado pueden convivir."
+    ]
+  },
+  {
+    "id": 33,
+    "tipo": "Texto",
+    "categoria": "Licencia",
+    "titulo": "Comunicar la licencia",
+    "subtitulo": "El modo en que se habla de la licencia empieza a construir la experiencia.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "Anunciar la licencia desde la claridad y la proyección futura, sin disculpas, cambia el tono de toda la transición.",
+      "Poner en palabras tiempos, acuerdos y expectativas reduce la incertidumbre y genera confianza.",
+      "Identificar las ideas aprendidas sobre trabajo y maternidad abre la posibilidad de elegir otras formas.",
+      "Decir qué es posible y qué no lo es también es una forma de cuidado."
+    ]
+  },
+  {
+    "id": 34,
+    "tipo": "Texto",
+    "categoria": "Licencia",
+    "titulo": "La licencia como proceso de transición",
+    "subtitulo": "El cuerpo sigue trabajando, aunque ya no sea visible como trabajo.",
+    "autoria": "Parent In",
     "lecturaEstimada": "4 min",
     "contenido": [
-      "Matrescencia: una etapa de transformación de la identidad.",
-      "Es habitual experimentar emociones contradictorias como entusiasmo e incertidumbre.",
-      "El primer trimestre es un período de mayor incertidumbre biológica."
+      "En promedio, una madre tarda más de cinco meses en sentirse físicamente “normal” y cerca de seis meses en recuperar estabilidad emocional tras el parto.",
+      "El descanso fragmentado, la lactancia y el cuidado constante redefinen la disponibilidad física y mental.",
+      "La mayoría de las madres dedica muy poco tiempo semanal a sí mismas durante los primeros meses, no por falta de deseo, sino por falta de espacio real.",
+      "Volver demasiado pronto al trabajo interrumpe procesos de recuperación clave para la salud materna."
     ]
   },
   {
-    "id": 11,
+    "id": 35,
     "tipo": "Texto",
-    "etapa": "TRANSICIÓN",
-    "titulo": "Embarazo — Segundo Trimestre: Cuerpo",
-    "subtitulo": "Despertar sensorial y maduración cerebral",
-    "categoria": "Cuerpo",
-    "lecturaEstimada": "5 min",
+    "categoria": "Licencia",
+    "titulo": "Transformación identitaria y emocional en la licencia",
+    "subtitulo": "Durante la licencia, la transformación interna se vuelve más evidente.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "4 min",
     "contenido": [
-      "El cerebro del bebé crea conexiones entre neuronas.",
-      "Hacia la semana 20, el bebé empieza a percibir el tacto.",
-      "El bebé comienza a percibir sabores a través del líquido amniótico."
+      "Es común sentir pérdida, confusión o desorientación ante el cambio radical de rutinas, prioridades y roles.",
+      "La licencia es un territorio intermedio: la mujer que eras ya no está del todo, y la madre trabajadora que serás todavía se está formando.",
+      "Amor profundo, cansancio extremo, gratitud y frustración pueden coexistir sin cancelarse.",
+      "Muchas madres se sienten solas durante esta etapa, aun estando acompañadas, y ese aislamiento es un factor de riesgo para el agotamiento emocional.",
+      "La llegada de un bebé suele aumentar los conflictos de pareja, no por falta de amor, sino por sobrecarga y falta de recursos."
     ]
   },
   {
-    "id": 12,
+    "id": 36,
     "tipo": "Texto",
-    "etapa": "TERCER TRIMESTRE",
-    "titulo": "Prepararse para el encuentro: Emoción",
-    "subtitulo": "Intensidad y apertura",
-    "categoria": "Emoción",
+    "categoria": "Licencia",
+    "titulo": "Acuerdos, corresponsabilidad y cuidados en la licencia",
+    "subtitulo": "Cómo se nombra esta etapa importa. Lo que se dice —y lo que no— también construye la experiencia de la licencia.",
+    "autoria": "Parent In",
     "lecturaEstimada": "3 min",
     "contenido": [
-      "El 'yo' comienza a reorganizarse para incluir al bebé.",
-      "Deseo de encuentro y miedo al cambio conviven.",
-      "Aumenta la sensibilidad emocional y la necesidad de cuidado externo."
+      "Nombrar la licencia como un tiempo legítimo de cuidado (y no como una ausencia incómoda) habilita una vivencia más sana.",
+      "Definir desde el inicio si habrá contacto laboral —y cómo— reduce la ansiedad y las expectativas implícitas.",
+      "Aprender a solicitar apoyo no como un favor, sino como una estrategia de sostenibilidad, es parte del aprendizaje de esta etapa.",
+      "Permitir que otras personas cuiden a su manera favorece la corresponsabilidad y alivia la carga mental materna."
     ]
   },
   {
-    "id": 13,
+    "id": 37,
     "tipo": "Texto",
-    "etapa": "ETAPA LICENCIA",
-    "titulo": "La licencia: Cuerpo",
-    "subtitulo": "Recuperar, sostener y adaptarse",
-    "categoria": "Cuerpo",
-    "lecturaEstimada": "6 min",
+    "categoria": "Post licencia",
+    "titulo": "Volver al trabajo con un cuerpo distinto",
+    "subtitulo": "Aunque el trabajo se reactive, el cuerpo sigue en transición.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
     "contenido": [
-      "Una madre tarda más de cinco meses en sentirse físicamente estable.",
-      "El descanso fragmentado y la lactancia redefinen la disponibilidad.",
-      "Volver demasiado pronto interrumpe procesos de recuperación clave."
+      "Muchas madres aún no se sienten física ni emocionalmente “estables” durante los primeros meses de regreso.",
+      "El descanso sigue siendo irregular y la carga diaria es mayor que antes, dentro y fuera del trabajo.",
+      "La mayoría de las madres dedica muy poco tiempo semanal a sí mismas en esta etapa, lo que impacta en el bienestar y la concentración.",
+      "El cuidado cotidiano sigue recayendo mayoritariamente en las madres, incluso después del regreso laboral."
     ]
   },
   {
-    "id": 14,
+    "id": 38,
     "tipo": "Texto",
-    "etapa": "ETAPA POST LICENCIA",
-    "titulo": "Volver al trabajo: Emoción",
-    "subtitulo": "Integrar identidades, no competir con ellas",
-    "categoria": "Laboral",
-    "lecturaEstimada": "5 min",
+    "categoria": "Post licencia",
+    "titulo": "Volver al trabajo con una identidad ampliada ",
+    "subtitulo": "Integrar identidades, no competir con ellas.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "4 min",
     "contenido": [
-      "Volver al trabajo genera desubicación: ni del todo en casa, ni del todo en el trabajo.",
-      "Culpa, alivio y orgullo pueden coexistir sin contradicción.",
-      "A la jornada laboral se suma el trabajo de sostener el clima emocional del hogar."
+      "Volver al trabajo puede generar sensación de desubicación: ni del todo en casa, ni del todo en el trabajo.",
+      "Al inicio, este rol puede sentirse forzado o improvisado, hasta que empieza a volverse propio.",
+      "Culpa, alivio, orgullo, cansancio y disfrute pueden coexistir sin contradicción.",
+      "Persisten prejuicios silenciosos sobre la disponibilidad, ambición o capacidad profesional de las madres que regresan.",
+      "A la jornada laboral se suma el trabajo de sostener el clima emocional del hogar frente a rutinas exigentes."
     ]
   },
   {
-    "id": 15,
-    "tipo": "Video",
-    "titulo": "Why paternity leave benefits everyone",
-    "autoria": "Shu Matsuo Post",
-    "duracion": "10 min",
-    "url": "https://www.youtube.com/watch?v=DCLoio-8d48",
-    "categoria": "Laboral"
-  },
-  {
-    "id": 16,
-    "tipo": "Video",
-    "titulo": "El poder de la vulnerabilidad",
-    "autoria": "Brene Brown",
-    "duracion": "20 min",
-    "url": "https://www.youtube.com/watch?v=iCvmsMzlF7o",
-    "categoria": "Emoción"
+    "id": 39,
+    "tipo": "Texto",
+    "categoria": "Post licencia",
+    "titulo": "Volver al trabajo y la construcción de expectativas",
+    "subtitulo": "Cómo se habla del retorno define gran parte de cómo se vive.",
+    "autoria": "Parent In",
+    "lecturaEstimada": "3 min",
+    "contenido": [
+      "Reingresar no es “estar como antes” Ajustar expectativas —propias y ajenas— reduce la frustración y sobreexigencia.",
+      "Acordar prioridades, límites y modalidades de trabajo evita supuestos que juegan en contra.",
+      "La culpa no es una señal de falla personal, sino un residuo cultural de épocas donde las mujeres no tenían opciones.",
+      "Para muchas madres, volver a trabajar también es recuperar reconocimiento, autonomía y sentido."
+    ]
   }
 ]
+ 
