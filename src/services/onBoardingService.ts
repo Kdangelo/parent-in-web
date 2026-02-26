@@ -1,7 +1,7 @@
 import api from "./api";
 
 
-export const submitOnboarding = async (userTypeStore: string | null, answers: Record<string, any>, url?: string) => {
+export const submitOnboarding = async (userTypeStore: string | null, answers: Record<string, any>) => {
     
     let response = null;
     switch(userTypeStore) {
@@ -17,7 +17,7 @@ export const submitOnboarding = async (userTypeStore: string | null, answers: Re
             response = await api.put("/onboarding/stage-details", answers);
             break;
         case 'organization':
-            response = await api.post(url || "", answers);
+            response = await api.put("/onboarding/organization/complete", answers);
             break;
         case 'professional':
             response = await api.post("/onboarding/professional/complete", answers);
