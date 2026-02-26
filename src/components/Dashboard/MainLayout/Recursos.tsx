@@ -1,5 +1,15 @@
 import { useState, useMemo, memo } from "react";
-import { IconBell, IconClock, IconLectura, IconSearch, IconVideoFilter } from "../../Icons/Icons"; 
+import { 
+  IconBell, 
+  IconClock, 
+  IconLectura, 
+  IconSearch, 
+  IconVideoFilter, 
+  Seedling, 
+  IconBaby, 
+  IconRecursoFiltro,
+  IconArrowRight,
+} from "../../Icons/Icons"; 
 import recursosData from "../../../../Jsons/recursos.json";
 
 interface Recurso {
@@ -15,13 +25,32 @@ interface Recurso {
   lecturaEstimada?: string;
 }
 
+// Función auxiliar para transformar el texto a: Primera mayúscula, resto minúsculas
+const capitalize = (text: string) => {
+  if (!text) return "";
+  const cleaned = text.trim();
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1).toLowerCase();
+};
+
 const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: { 
   recurso: Recurso, 
   filtroTipo: string, 
   onSelect: (r: Recurso) => void 
 }) => {
   const isTexto = filtroTipo === "Texto";
-  
+
+  const renderIcon = () => {
+    const iconClass = "w-5 h-5";
+    const cat = (recurso.categoria || "").toLowerCase().trim();
+
+    if (cat.includes("post")) return <IconRecursoFiltro className={iconClass} />;
+    if (cat.includes("pre")) return <Seedling className={iconClass} />;
+    if (cat.includes("licencia") || cat.includes("cuidados") || cat.includes("bebe")) {
+      return <IconBaby className={iconClass} />;
+    }
+    return <IconRecursoFiltro className={iconClass} />;
+  };
+
   return (
     <div className={`bg-white border border-[#3939391A] rounded-[24px] p-6 flex flex-col justify-between hover:shadow-md transition-all w-full
       ${isTexto ? "max-w-[320px] lg:max-w-[289px] h-[238px]" : "max-w-full md:max-w-[449px] h-auto md:min-h-[292px]"}`}>
@@ -29,7 +58,16 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
       {isTexto ? (
         <div className="flex flex-col h-full">
           <div className="flex-grow">
-            <h4 className="font-bold text-[18px] mb-2 leading-tight font-glacial line-clamp-2">{recurso.titulo}</h4>
+            <div className="flex items-center gap-2 mb-2">
+              <div className="flex shrink-0 w-5 h-5 items-center justify-center overflow-hidden">
+                {renderIcon()}
+              </div>
+              {/* CORRECCIÓN: Se eliminó 'uppercase' y se aplicó capitalize() */}
+              <span className="text-[12px] text-[#9FC47C] font-bold font-glacial">
+                {capitalize(recurso.categoria)}
+              </span>
+            </div>
+            <h5 className="font-bold text-[18px] mb-2 leading-tight font-glacial line-clamp-2">{recurso.titulo}</h5>
             <p className="text-[14px] text-[#A3A3A3] line-clamp-3 mb-4 font-glacial">{recurso.subtitulo}</p>
           </div>
           <div className="flex justify-between items-center mt-auto">
@@ -39,9 +77,10 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
             </div>
             <button 
               onClick={() => onSelect(recurso)}
-              className="text-[14px] font-bold border-b border-[#393939] pb-0.5 font-glacial active:scale-95 transition-transform"
+              className="text-[14px] font-bold font-glacial active:scale-95 transition-transform"
             >
               Leer completo
+              <IconArrowRight className="w-4 h-4 inline-block ml-1" />
             </button>
           </div>
         </div>
@@ -53,6 +92,15 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
               alt={recurso.titulo} 
             />
+          </div>
+          <div className="flex items-center gap-2 mb-1">
+            <div className="flex shrink-0 min-w-[20px] justify-center">
+                {renderIcon()}
+            </div>
+            {/* CORRECCIÓN: Se eliminó 'uppercase' y se aplicó capitalize() */}
+            <span className="text-[12px] text-[#9FC47C] font-bold font-glacial">
+              {capitalize(recurso.categoria)}
+            </span>
           </div>
           <h4 className="font-bold text-[16px] mb-1 font-glacial line-clamp-1">{recurso.titulo}</h4>
           <p className="text-[12px] text-[#A3A3A3] mb-4 font-glacial">{recurso.autoria} • {recurso.duracion}</p>
@@ -78,8 +126,7 @@ export default function Recursos() {
   }, [filtroTipo, busqueda]);
 
   return (
-    <div className="flex flex-col h-full max-w-[923px] font-sans text-[#393939] px-4 md:px-0">
-      
+    <div className="flex flex-col h-full max-w-[923px] font-sans text-[#393939] px-4 md:px-0">      
       {/* HEADER */}
       <header className="flex justify-between items-start w-full mt-6 md:mt-0 mb-8">
         <div className="flex flex-col gap-1 pl-10 md:pl-0">
@@ -92,7 +139,6 @@ export default function Recursos() {
         </div>
       </header>
 
-      {/* BUSCADOR */}
       <div className="relative mb-6">
         <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#393939] w-8 h-8 opacity-40" />
         <input
@@ -104,7 +150,6 @@ export default function Recursos() {
         />
       </div>
 
-      {/* FILTROS */}
       <div className="flex gap-3 mb-8">
         {[
           { id: "Texto", icon: <IconLectura className="w-5 h-5" />, label: "Lectura" },
@@ -142,7 +187,6 @@ export default function Recursos() {
         </div>
       )}
 
-      {/* MODAL*/}
       {recursoSeleccionado && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden">
           <div className="absolute inset-0 bg-[#393939]/30 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setRecursoSeleccionado(null)} />
