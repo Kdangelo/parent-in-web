@@ -15,6 +15,7 @@ import Checklist from "../components/Dashboard/MainLayout/Checklist";
 import Agenda from "../components/Dashboard/MainLayout/Agenda";
 import Recursos from "../components/Dashboard/MainLayout/Recursos";
 import Ajustes from "../components/Dashboard/MainLayout/Ajustes/Ajustes";
+import Comunidad from "../components/Dashboard/MainLayout/Comunidad";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
                             { path: 'resources', element: <Recursos /> },
                             { path: 'checklist', element: <Checklist /> },
                             { path: 'checkin', element: <CheckIn /> },
-                            { path: 'community', element: <div>Community</div> },
+                            { path: 'community', element: <Comunidad /> },
                             { path: 'agenda', element: <Agenda /> },
                             { path: 'settings', element: <Ajustes /> }
                         ]
