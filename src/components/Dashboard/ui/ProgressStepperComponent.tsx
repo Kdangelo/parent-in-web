@@ -1,6 +1,4 @@
 import React from 'react';
-
-// Importación de tus imágenes y componentes
 import { Seedling } from '../../Icons/Icons'; 
 import BabyIcon from '../../../assets/Baby.png';
 import BriefcaseIcon from '../../../assets/Briefcase.png';
@@ -37,22 +35,17 @@ const ProgressStepperComponent: React.FC<ProgressStepperProps> = ({
 
       <div className="flex justify-between w-full max-w-[780px] relative mb-8">
         {stages.map((stage) => {
-          const isActive = currentStep === stage.id; // Solo el actual brilla
-          const isCompleted = currentStep > stage.id; // Los pasados ya están listos
+          const isActive = currentStep === stage.id;
+          const isCompleted = currentStep > stage.id;
 
           return (
-            <div key={stage.id} className="flex flex-col items-center gap-4 z-10 flex-1">
-              
-              {/* Círculo del Icono: Ahora siempre visible */}
+            <div key={stage.id} className="flex flex-col items-center gap-4 z-10 flex-1">              
               <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center border transition-all duration-500 ${
                 isActive || isCompleted
-                  ? 'border-[#3939391A] bg-white shadow-md scale-110' // Resalta el actual y completados
-                  : 'border-[#3939390D] bg-[#F8F9FB]' // Los futuros se ven, pero más planos
+                  ? 'border-[#3939391A] bg-white shadow-md scale-110'
+                  : 'border-[#3939390D] bg-[#F8F9FB]'
               }`}>
-                {/* QUITAMOS 'opacity-20' y 'opacity-40'. 
-                   Ahora todos tienen opacity-100 para que se vean siempre.
-                */}
-                <div className={`transition-all duration-500 ${
+              <div className={`transition-all duration-500 ${
                   isActive ? 'opacity-100' : 'opacity-70 grayscale-[0.3]'
                 }`}>
                   {stage.icon}
