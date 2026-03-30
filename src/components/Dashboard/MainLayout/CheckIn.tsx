@@ -30,7 +30,7 @@ export default function CheckIn() {
           
           <div className="relative p-3 bg-white rounded-full shadow-sm cursor-pointer border border-[#F0F0F0] hover:bg-gray-50 transition-colors">
             <IconBell className="text-[#393939] w-6 h-6" />
-            <div className="absolute top-2.5 right-2.5 w-[10px] h-[10px] bg-[#9FC47C] border-2 border-white rounded-full"></div>
+            <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-[#9FC47C] border-2 border-white rounded-full"></div>
           </div>
         </div>
 
@@ -39,15 +39,15 @@ export default function CheckIn() {
           {categories.map((cat) => (
             <div 
               key={cat.id} 
-              className="bg-white p-6 md:p-10 rounded-[32px] w-full border border-[#F5F5F5] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center justify-between hover:border-[#E8E8E8] transition-all duration-300 gap-6"
+              className="bg-white p-6 md:p-10 rounded-4xl w-full border border-[#F5F5F5] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center justify-between hover:border-[#E8E8E8] transition-all duration-300 gap-6"
             >
               <div className="flex gap-6 items-start w-full md:w-auto">
-                <div className="mt-1.5 p-3 bg-[#F9FAFD] rounded-2xl text-[#393939] flex-shrink-0">
+                <div className="mt-1.5 p-3 bg-[#F9FAFD] rounded-2xl text-[#393939] shrink-0">
                   <cat.icon className="w-7 h-7" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-lora font-bold text-[24px] md:text-[28px] text-[#393939] leading-none">
+                  <h3 className="font-lora font-bold text-[24px] md:text-[22px] text-[#393939] leading-none">
                     {cat.title}
                   </h3>
                   <p className="font-glacial text-[15px] md:text-[16px] text-[#8E8E8E] leading-relaxed max-w-[500px]">
@@ -62,7 +62,7 @@ export default function CheckIn() {
               </div>
               <button 
                 onClick={() => setActiveCategory(cat.id)}
-                className="w-full md:w-[150px] h-[48px] rounded-[18px] bg-[#595E6A] text-white font-glacial font-bold text-[16px] flex items-center justify-center gap-2 hover:bg-[#393939] transform active:scale-95 transition-all shadow-sm"
+                className="w-full md:w-[150px] h-12 rounded-[18px] bg-[#595E6A] text-white font-glacial font-bold text-[16px] flex items-center justify-center gap-2 hover:bg-[#393939] transform active:scale-95 transition-all shadow-sm"
               >
                 Comenzar 
                 <span className="text-xl leading-none">→</span>
