@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Data from "../../../../Jsons/recursos.json";
 import FlowerIcon from "../../../assets/Ellipse 49.png"; 
 import Avatar from "../../../assets/Ellipse 63.png";
 import { 
@@ -26,11 +27,12 @@ interface Post {
   author: string;
   type: string;
   time: string;
-  content: string;
+  content: string | string[]; // Soporta el array del JSON
   isParentIn: boolean;
   liked: boolean;
   comments: Comentario[];
   title?: string;
+  subtitulo?: string;
 }
 
 const CommunityAvatar = ({ badge }: { badge: React.ReactNode }) => (
@@ -50,15 +52,20 @@ export default function Comunidad() {
   const [showCommentInput, setShowCommentInput] = useState(false);
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
   const [newCommentText, setNewCommentText] = useState("");
-  
+  const [expandedPostId, setExpandedPostId] = useState<number | null>(null);
+
+  // Usamos el recurso del JSON (asegurando que el contenido no sea undefined con "|| []")
+  const recursoJson = Data[21]; 
+
   const [posts, setPosts] = useState<Post[]>([
     {
       id: 1,
       author: "Parent In",
       type: "ha publicado un nuevo material de lectura",
       time: "hace 1 hora",
-      title: "Cambios emocionales",
-      content: "En los meses 1 a 3 del embarazo, las emociones suelen ser intensas y cambiantes.",
+      title: recursoJson.titulo,
+      subtitulo: recursoJson.subtitulo,
+      content: recursoJson.contenido || [], // Solución al error de 'undefined'
       isParentIn: true,
       liked: false,
       comments: [{ id: 201, user: "Laura M.", text: "Excelente información, gracias.", liked: false }]
@@ -88,6 +95,7 @@ export default function Comunidad() {
   const handleBack = () => {
     setSelectedPostId(null);
     setShowCommentInput(false);
+    setExpandedPostId(null);
   };
 
   const handleMuteUser = (postId: number) => {
@@ -137,6 +145,10 @@ export default function Comunidad() {
       }
       return post;
     }));
+  };
+
+  const toggleExpand = (id: number) => {
+    setExpandedPostId(expandedPostId === id ? null : id);
   };
 
   const displayedPosts = selectedPostId ? posts.filter(p => p.id === selectedPostId) : posts;
@@ -203,10 +215,25 @@ export default function Comunidad() {
                 </div>
               </div>
 
-              {post.title && <h3 className="font-bold text-[22px] font-glacial">{post.title}</h3>}
-              <p className="text-[15px] font-glacial text-[#393939] leading-relaxed">{post.content}</p>
+              {post.title && <h3 className="font-bold text-[22px] font-glacial leading-tight">{post.title}</h3>}
+              
+              <div className="flex flex-col gap-3">
+                {post.isParentIn && expandedPostId === post.id && post.subtitulo && (
+                  <p className="font-bold text-[16px] text-[#8B96A8] font-glacial italic">{post.subtitulo}</p>
+                )}
 
-              <div className="flex justify-between items-center gap-6 mt-4">
+                {Array.isArray(post.content) ? (
+                  expandedPostId === post.id ? (
+                    post.content.map((p, i) => <p key={i} className="text-[15px] font-glacial text-[#393939] leading-relaxed">{p}</p>)
+                  ) : (
+                    <p className="text-[15px] font-glacial text-[#393939] leading-relaxed line-clamp-2">{post.content[0]}</p>
+                  )
+                ) : (
+                  <p className="text-[15px] font-glacial text-[#393939] leading-relaxed">{post.content}</p>
+                )}
+              </div>
+
+              <div className="flex justify-between items-center gap-6 mt-4 border-[#F7F6F1] border-t pt-4">
                 <div>
                   {selectedPostId ? (
                     <button onClick={handleBack} className="flex items-center gap-2 text-[#C2C2C2] font-glacial text-[15px] hover:text-[#393939] transition-colors">
@@ -219,7 +246,9 @@ export default function Comunidad() {
                   )}
                 </div>
                 {post.isParentIn && (
-                  <button className="font-bold font-glacial text-[15px] hover:underline transition-all">Leer articulo →</button>
+                  <button onClick={() => toggleExpand(post.id)} className="font-bold font-glacial text-[15px] text-[#C2C2C2] hover:underline transition-all">
+                    {expandedPostId === post.id ? "Leer menos ↑" : "Leer artículo →"}
+                  </button>
                 )}
               </div>
 
@@ -234,7 +263,6 @@ export default function Comunidad() {
                 </div>
               )}
 
-              {/* DETALLE DE COMENTARIOS */}
               {selectedPostId === post.id && (
                 <div className="mt-6 flex flex-col gap-4 border-[#F7F6F1] border-t pt-6">
                   <h5 className="font-bold text-[16px] font-glacial">Comentarios</h5>
@@ -249,28 +277,16 @@ export default function Comunidad() {
                           </div>
                         </div>
                         <div className="flex gap-4 ml-4">
-                          <button 
-                            onClick={() => toggleCommentLike(post.id, c.id)}
-                            className={`flex items-center gap-1.5 text-[12px] font-bold font-glacial transition-colors ${c.liked ? 'text-[#E6C0D7]' : 'text-[#A3A3A3]'}`}
-                          >
+                          <button onClick={() => toggleCommentLike(post.id, c.id)} className={`flex items-center gap-1.5 text-[12px] font-bold font-glacial transition-colors ${c.liked ? 'text-[#E6C0D7]' : 'text-[#A3A3A3]'}`}>
                             <IconHeart className="w-3.5 h-3.5" filled={c.liked} /> Me gusta
                           </button>
                         </div>
                       </div>
                     ))}
                   </div>
-
-                  {/* INPUT COMENTAR */}
                   {showCommentInput && (
                     <div className="flex gap-2 mt-4">
-                      <input 
-                        type="text" 
-                        value={newCommentText} 
-                        onChange={(e) => setNewCommentText(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)}
-                        placeholder="Escribe un comentario..." 
-                        className="flex-1 bg-gray-100 rounded-full px-6 py-3 outline-none font-glacial text-[14px]"
-                      />
+                      <input type="text" value={newCommentText} onChange={(e) => setNewCommentText(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)} placeholder="Escribe un comentario..." className="flex-1 bg-gray-100 rounded-full px-6 py-3 outline-none font-glacial text-[14px]" />
                       <button onClick={() => handleAddComment(post.id)} className="px-6 py-3 font-bold font-glacial text-[14px] text-[#E6C0D7] hover:opacity-80">Enviar</button>
                     </div>
                   )}
@@ -279,25 +295,46 @@ export default function Comunidad() {
             </article>
           ))}
         </div>
-
+        
         <aside className="w-full lg:w-[300px] flex flex-col gap-6">
           <div className="bg-white border border-[#3939391A] rounded-[24px] p-6 shadow-sm sticky top-6">
             <h3 className="font-bold font-glacial text-[16px] mb-6">Canales de comunicación</h3>
             <div className="flex flex-col gap-5">
-              <div className="flex items-center justify-between cursor-pointer group">
+              
+              {/* WhatsApp Link */}
+              <a 
+                href="https://chat.whatsapp.com/GfP6Fb3ws154yPZVtKe9AG?mode=gi_t" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-between cursor-pointer group"
+              >
                 <div className="flex gap-3 items-center">
                   <CommunityAvatar badge={<IconBrandWhatsapp className="text-[#25D366]" />} />
-                  <div><h5 className="font-bold text-[15px] font-glacial group-hover:text-green-600 transition-colors">WhatsApp</h5><p className="text-[13px] text-[#C2C2C2] font-glacial">Argentina</p></div>
+                  <div>
+                    <h5 className="font-bold text-[15px] font-glacial group-hover:text-green-600 transition-colors">WhatsApp</h5>
+                    <p className="text-[13px] text-[#C2C2C2] font-glacial">Argentina</p>
+                  </div>
                 </div>
                 <IconInfoCircle className="text-[#393939]" />
-              </div>
-              <div className="flex items-center justify-between cursor-pointer group">
+              </a>
+
+              {/* Instagram Link */}
+              <a 
+                href="https://www.instagram.com/helloparentin?igsh=MXJ0OTEwMGRjeGkybA==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-between cursor-pointer group"
+              >
                 <div className="flex gap-3 items-center">
                   <CommunityAvatar badge={<IconInstagram className="text-[#E1306C]" />} />
-                  <div><h5 className="font-bold text-[15px] font-glacial group-hover:text-pink-600 transition-colors">Instagram</h5><p className="text-[13px] text-[#C2C2C2] font-glacial">Latam</p></div>
+                  <div>
+                    <h5 className="font-bold text-[15px] font-glacial group-hover:text-pink-600 transition-colors">Instagram</h5>
+                    <p className="text-[13px] text-[#C2C2C2] font-glacial">Latam</p>
+                  </div>
                 </div>
                 <IconInfoCircle className="text-[#393939]" />
-              </div>
+              </a>
+
             </div>
           </div>
         </aside>

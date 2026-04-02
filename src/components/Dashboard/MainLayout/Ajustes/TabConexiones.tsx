@@ -2,24 +2,23 @@ import {
   IconBrandWhatsapp, 
   IconBrandGmail, 
   IconBrandGoogleCalendar, 
-  IconBrandTeams, 
+  //IconBrandTeams, 
   IconBrandLinkedin 
 } from "../../../Icons/Icons";
 
 export const TabConexiones = ({ styles }: { styles: any }) => {  
   const connections = [
     { id: 1, name: "WhatsApp", icon: <IconBrandWhatsapp className="w-8 h-8 text-[#25D366]" />, status: "connected" },
-    { id: 2, name: "G-mail", icon: <IconBrandGmail className="w-8 h-8" />, status: "connected" },
+    { id: 2, name: "Gmail", icon: <IconBrandGmail className="w-8 h-8" />, status: "connected" },
     { id: 3, name: "Google Calendar", icon: <IconBrandGoogleCalendar className="w-8 h-8" />, status: "disconnected" },
-    { id: 4, name: "Teams", icon: <IconBrandTeams className="w-8 h-8" />, status: "disconnected" },
-    { id: 5, name: "LinkedIn", icon: <IconBrandLinkedin className="w-8 h-8" />, status: "disconnected" },
+    { id: 4, name: "LinkedIn", icon: <IconBrandLinkedin className="w-8 h-8" />, status: "disconnected" },
   ];
 
   return (
     <>
       <section>
         <h3 className={styles.sectionTitle}>Cuentas vinculadas</h3>
-        <div className="bg-white rounded-[24px] border border-[#3939391A] p-6 md:p-8 shadow-sm">
+        <div className="bg-white rounded-3xl border border-[#3939391A] p-6 md:p-8 shadow-sm">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {connections.map((conn) => (
               <div 
@@ -36,7 +35,7 @@ export const TabConexiones = ({ styles }: { styles: any }) => {
                 </span>
                 
                 <button 
-                  className={`h-[32px] w-full max-w-[120px] rounded-full font-glacial font-semibold text-[14px] transition-all ${
+                  className={`h-8 w-full max-w-[120px] rounded-full font-glacial font-semibold text-[14px] transition-all ${
                     conn.status === "connected" 
                       ? "bg-[#7D8495] text-white hover:bg-[#393939]" 
                       : "bg-[#EBECEF] text-[#3939394D] hover:bg-[#DDE0E5]"
@@ -54,7 +53,7 @@ export const TabConexiones = ({ styles }: { styles: any }) => {
         <button className="font-glacial font-semibold text-[#767D8E] text-[16px] hover:text-[#393939]">
           Reestablecer
         </button>
-        <button className="w-full md:w-[240px] h-[50px] bg-[#7D8495] text-white rounded-full font-glacial font-semibold text-[18px] shadow-sm hover:bg-[#6b7282] transition-all">
+        <button className="w-full md:w-60 h-[50px] bg-[#7D8495] text-white rounded-full font-glacial font-semibold text-[18px] shadow-sm hover:bg-[#6b7282] transition-all">
           Guardar
         </button>
       </div>

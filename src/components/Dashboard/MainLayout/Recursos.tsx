@@ -52,12 +52,12 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
   };
 
   return (
-    <div className={`bg-white border border-[#3939391A] rounded-[24px] p-6 flex flex-col justify-between hover:shadow-md transition-all w-full
+    <div className={`bg-white border border-[#3939391A] rounded-3xl p-6 flex flex-col justify-between hover:shadow-md transition-all w-full
       ${isTexto ? "max-w-[320px] lg:max-w-[289px] h-[238px]" : "max-w-full md:max-w-[449px] h-auto md:min-h-[292px]"}`}>
       
       {isTexto ? (
         <div className="flex flex-col h-full">
-          <div className="flex-grow">
+          <div className="grow">
             <div className="flex items-center gap-2 mb-2">
               <div className="flex shrink-0 w-5 h-5 items-center justify-center overflow-hidden">
                 {renderIcon()}
@@ -86,7 +86,7 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
         </div>
       ) : (
         <div className="flex flex-col h-full">
-          <div className="relative w-full aspect-video mb-4 rounded-[12px] overflow-hidden bg-gray-100 group">
+          <div className="relative w-full aspect-video mb-4 rounded-xl overflow-hidden bg-gray-100 group">
             <img 
               src={`https://img.youtube.com/vi/${recurso.url?.split('v=')[1]}/hqdefault.jpg`} 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
@@ -94,7 +94,7 @@ const RecursoCard = memo(({ recurso, filtroTipo, onSelect }: {
             />
           </div>
           <div className="flex items-center gap-2 mb-1">
-            <div className="flex shrink-0 min-w-[20px] justify-center">
+            <div className="flex shrink-0 min-w-5 justify-center">
                 {renderIcon()}
             </div>
             {/* CORRECCIÓN: Se eliminó 'uppercase' y se aplicó capitalize() */}
@@ -144,7 +144,7 @@ export default function Recursos() {
         <input
           type="text"
           placeholder="Buscar recursos..."
-          className="w-full h-[48px] pl-12 pr-5 rounded-[15px] border border-[#3939391A] focus:border-[#3939394D] outline-none font-glacial text-[16px] transition-all"
+          className="w-full h-12 pl-12 pr-5 rounded-[15px] border border-[#3939391A] focus:border-[#3939394D] outline-none font-glacial text-[16px] transition-all"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
@@ -158,7 +158,7 @@ export default function Recursos() {
           <button
             key={btn.id}
             onClick={() => setFiltroTipo(btn.id as any)}
-            className={`flex items-center gap-2 h-[44px] px-6 rounded-full border transition-all font-glacial ${
+            className={`flex items-center gap-2 h-11 px-6 rounded-full border transition-all font-glacial ${
               filtroTipo === btn.id ? "bg-[#393939] text-white font-semibold" : "bg-white text-[#A3A3A3] hover:border-[#3939394D]"
             }`}
           >
@@ -190,7 +190,7 @@ export default function Recursos() {
       {recursoSeleccionado && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden">
           <div className="absolute inset-0 bg-[#393939]/30 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setRecursoSeleccionado(null)} />
-          <div className="bg-white w-full max-w-[720px] max-h-[90vh] rounded-[32px] shadow-2xl relative flex flex-col overflow-hidden animate-in zoom-in-95 duration-300">
+          <div className="bg-white w-full max-w-[720px] max-h-[90vh] rounded-4xl shadow-2xl relative flex flex-col overflow-hidden animate-in zoom-in-95 duration-300">
             <button 
               onClick={() => setRecursoSeleccionado(null)} 
               className="absolute top-6 right-6 z-20 bg-[#F5F5F5] p-2 rounded-full hover:rotate-90 transition-all"
@@ -201,7 +201,7 @@ export default function Recursos() {
             <div className="overflow-y-auto pt-16 pb-12 px-8 md:px-16 custom-scrollbar">
               <h2 className="text-[#393939] font-glacial font-bold text-[30px] md:text-[42px] leading-tight tracking-tight">{recursoSeleccionado.titulo}</h2>
               <h3 className="text-[#A3A3A3] font-glacial text-[18px] md:text-[20px] mt-4">{recursoSeleccionado.subtitulo}</h3>
-              <div className="h-[2px] w-12 bg-[#393939] my-8 rounded-full" />
+              <div className="h-0.5 w-12 bg-[#393939] my-8 rounded-full" />
               <div className="text-[#393939]/90 font-glacial text-[17px] md:text-[18px] leading-relaxed flex flex-col gap-6">
                 {recursoSeleccionado.contenido?.map((p, i) => <p key={i}>{p}</p>)}
               </div>
